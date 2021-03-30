@@ -1,9 +1,10 @@
 <template>
   <div class="topbar-item">
-    <div class="btn btn-icon btn-clean btn-lg mr-1" id="kt_quick_panel_toggle">
+    <div class="btn btn-icon btn-clean btn-lg mr-1 pulse pulse-primary" id="kt_quick_panel_toggle">
       <span class="svg-icon svg-icon-xl svg-icon-primary">
-        <inline-svg src="media/svg/icons/Layout/Layout-4-blocks.svg" />
+        <inline-svg src="media/svg/icons/Code/Compiling.svg" />
       </span>
+      <span class="pulse-ring"></span>
     </div>
 
     <!-- begin::Quick Panel -->
@@ -30,19 +31,6 @@
               href="#"
               role="tab"
               aria-selected="true"
-            >
-              Audit Logs
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              v-on:click="setActiveTab"
-              data-tab="1"
-              data-toggle="tab"
-              href="#"
-              role="tab"
-              aria-selected="false"
             >
               Notifications
             </a>
@@ -77,89 +65,6 @@
         <div class="tab-content">
           <b-tabs class="hide-tabs" v-model="tabIndex">
             <b-tab active>
-              <div class="scroll pr-7 mr-n7" id="kt_quick_panel_logs">
-                <div class="mb-15">
-                  <h5 class="font-weight-bold mb-5">System Messages</h5>
-                  <template v-for="(item, i) in list1">
-                    <!--begin: Item -->
-                    <div
-                      class="d-flex align-items-center flex-wrap mb-5"
-                      v-bind:key="i"
-                    >
-                      <div class="symbol symbol-50 symbol-light mr-5">
-                        <span class="symbol-label">
-                          <inline-svg
-                            :src="item.svg"
-                            class="h-50 align-self-center"
-                          />
-                        </span>
-                      </div>
-                      <div class="d-flex flex-column flex-grow-1 mr-2">
-                        <a
-                          href="#"
-                          class="font-weight-bolder text-dark-75 text-hover-primary font-size-lg mb-1"
-                        >
-                          {{ item.title }}
-                        </a>
-                        <span class="text-muted font-weight-bold">
-                          {{ item.desc }}
-                        </span>
-                      </div>
-                      <span
-                        class="btn btn-sm btn-light font-weight-bolder py-1 my-lg-0 my-2 text-dark-50"
-                      >
-                        {{ item.alt }}
-                      </span>
-                    </div>
-                    <!--end: Item -->
-                  </template>
-                </div>
-
-                <div class="mb-15">
-                  <h5 class="font-weight-bold mb-5">Notifications</h5>
-                  <template v-for="(item, i) in list2">
-                    <!--begin: Item -->
-                    <div
-                      class="d-flex align-items-center rounded p-5 mb-5"
-                      v-bind:key="i"
-                      v-bind:class="`bg-light-${item.type}`"
-                    >
-                      <span
-                        class="svg-icon mr-5"
-                        v-bind:class="`svg-icon-${item.type}`"
-                      >
-                        <inline-svg
-                          :src="item.svg"
-                          class="h-50 align-self-center"
-                        />
-                      </span>
-
-                      <div class="d-flex flex-column flex-grow-1 mr-2">
-                        <a
-                          href="#"
-                          class="font-weight-normal text-dark-75 text-hover-primary font-size-lg mb-1"
-                        >
-                          {{ item.title }}
-                        </a>
-                        <span class="text-muted font-size-sm">
-                          {{ item.desc }}
-                        </span>
-                      </div>
-
-                      <span
-                        class="font-weight-bolder py-1 font-size-lg"
-                        v-bind:class="`text-${item.type}`"
-                      >
-                        {{ item.alt }}
-                      </span>
-                    </div>
-                    <!--end: Item -->
-                  </template>
-                </div>
-              </div>
-            </b-tab>
-
-            <b-tab>
               <div class="scroll pr-7 mr-n7" id="kt_quick_panel_notifications">
                 <!--begin::Nav-->
                 <div class="navi navi-icon-circle navi-spacer-x-0">
@@ -351,62 +256,6 @@ export default {
   data() {
     return {
       tabIndex: 0,
-      list1: [
-        {
-          title: "Top Authors",
-          desc: "Most Successful Fellas",
-          alt: "+82$",
-          svg: "media/svg/misc/006-plurk.svg"
-        },
-        {
-          title: "Popular Authors",
-          desc: "Most Successful Fellas",
-          alt: "+280$",
-          svg: "media/svg/misc/006-plurk.svg"
-        },
-        {
-          title: "New Users",
-          desc: "Most Successful Fellas",
-          alt: "+4500$",
-          svg: "media/svg/misc/015-telegram.svg"
-        },
-        {
-          title: "Active Customers",
-          desc: "Most Successful Fellas",
-          alt: "+4500$",
-          svg: "media/svg/misc/003-puzzle.svg"
-        }
-      ],
-      list2: [
-        {
-          title: "Another purpose persuade",
-          desc: "Due in 2 Days",
-          alt: "+28%",
-          svg: "media/svg/icons/Home/Library.svg",
-          type: "warning"
-        },
-        {
-          title: "Would be to people",
-          desc: "Due in 2 Days",
-          alt: "+50%",
-          svg: "media/svg/icons/Communication/Write.svg",
-          type: "success"
-        },
-        {
-          title: "Purpose would be to persuade",
-          desc: "Due in 2 Days",
-          alt: "-27%",
-          svg: "media/svg/icons/Communication/Group-chat.svg",
-          type: "danger"
-        },
-        {
-          title: "The best product",
-          desc: "Due in 2 Days",
-          alt: "+8%",
-          svg: "media/svg/icons/General/Attachment2.svg",
-          type: "info"
-        }
-      ],
       list3: [
         {
           title: "5 new user generated report",
