@@ -21,62 +21,19 @@ export default new Router({
           component: () => import("@/view/Blog")
         },
         {
-          path: "/manage",
-          name: "manage",
-          children: [
-            {
-              path: "/posts",
-              name: "posts",
-              component: () => import("@/view/Blog"),
-            },
-            {
-              path: "groups",
-              name: "groups",
-              component: () => import("@/view/Groups")
-            },
-            {
-              path: "tags",
-              name: "tags",
-              component: () => import("@/view/Tags")
-            },
-          ]
-        }
-      ]
-    },
-    {
-      path: "/custom-error",
-      name: "error",
-      component: () => import("@/view/pages/error/Error.vue"),
-      children: [
-        {
-          path: "error-1",
-          name: "error-1",
-          component: () => import("@/view/pages/error/Error-1.vue")
+          path: "/manage/posts",
+          name: "manage-post",
+          component: () => import("@/view/Blog")
         },
         {
-          path: "error-2",
-          name: "error-2",
-          component: () => import("@/view/pages/error/Error-2.vue")
+          path: "/manage/groups",
+          name: "manage-groups",
+          component: () => import("@/view/Groups")
         },
         {
-          path: "error-3",
-          name: "error-3",
-          component: () => import("@/view/pages/error/Error-3.vue")
-        },
-        {
-          path: "error-4",
-          name: "error-4",
-          component: () => import("@/view/pages/error/Error-4.vue")
-        },
-        {
-          path: "error-5",
-          name: "error-5",
-          component: () => import("@/view/pages/error/Error-5.vue")
-        },
-        {
-          path: "error-6",
-          name: "error-6",
-          component: () => import("@/view/pages/error/Error-6.vue")
+          path: "/manage/tags",
+          name: "manage-tags",
+          component: () => import("@/view/Tags")
         }
       ]
     },

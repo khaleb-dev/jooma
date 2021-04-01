@@ -64,7 +64,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "widget-1",
+  name: "DashboardCard",
   data() {
     return {
       strokeColor: "#D13647",
