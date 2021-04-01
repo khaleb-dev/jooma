@@ -145,7 +145,7 @@ export default {
      */
     toolbarDisplay() {
       // return !!this.layoutConfig("toolbar.display");
-      return true;
+      return false;
     },
 
     /**

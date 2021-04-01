@@ -16,35 +16,29 @@ export default new Router({
           component: () => import("@/view/Dashboard")
         },
         {
-          path: "/builder",
-          name: "builder",
-          component: () => import("@/view/pages/Builder.vue")
+          path: "/create-post",
+          name: "create-post",
+          component: () => import("@/view/Blog")
         },
         {
-          path: "/profile",
-          name: "profile",
-          component: () => import("@/view/pages/profile/Profile.vue"),
+          path: "/manage",
+          name: "manage",
           children: [
             {
-              path: "profile-1",
-              name: "profile-1",
-              component: () => import("@/view/pages/profile/Profile-1.vue")
+              path: "/posts",
+              name: "posts",
+              component: () => import("@/view/Blog"),
             },
             {
-              path: "profile-2",
-              name: "profile-2",
-              component: () => import("@/view/pages/profile/Profile-2.vue")
+              path: "groups",
+              name: "groups",
+              component: () => import("@/view/Groups")
             },
             {
-              path: "profile-3",
-              name: "profile-3",
-              component: () => import("@/view/pages/profile/Profile-3.vue")
+              path: "tags",
+              name: "tags",
+              component: () => import("@/view/Tags")
             },
-            {
-              path: "profile-4",
-              name: "profile-4",
-              component: () => import("@/view/pages/profile/Profile-4.vue")
-            }
           ]
         }
       ]
