@@ -22,9 +22,6 @@
           id="kt_content"
           class="content d-flex flex-column flex-column-fluid"
         >
-          <!-- begin:: Content Head -->
-
-          <!-- begin:: Content Head -->
           <KTSubheader
             v-if="subheaderDisplay"
             v-bind:breadcrumbs="breadcrumbs"

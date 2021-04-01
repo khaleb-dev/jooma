@@ -30,6 +30,7 @@ import "@/core/plugins/treeselect";
 import "@/core/plugins/metronic";
 import "@mdi/font/css/materialdesignicons.css";
 import "@/core/plugins/formvalidation";
+import VueFab from 'vue-float-action-button'
 
 // API service init
 ApiService.init();
@@ -50,10 +51,17 @@ router.beforeEach((to, from, next) => {
   }, 100);
 });
 
+// Enable use of VueFloatingActionButton
+Vue.use(VueFab, {
+  //iconType: 'MaterialDesign'
+  iconType: 'iconfont'
+})
+
 new Vue({
   router,
   store,
   i18n,
   vuetify,
+  VueFab,
   render: h => h(App)
 }).$mount("#app");

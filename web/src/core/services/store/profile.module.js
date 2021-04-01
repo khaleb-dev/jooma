@@ -9,19 +9,19 @@ export const SET_ACCOUNT_INFO = "setAccountInfo";
 const state = {
   user_personal_info: {
     photo: "media/users/300_21.jpg",
-    name: "James",
-    surname: "Jones",
-    company_name: "Fifestudios",
-    job: "Application Developer",
-    email: "matt@fifestudios.com",
-    phone: "44(76)34254578",
-    company_site: "fifestudios"
+    name: "Jessy",
+    surname: "Ralph",
+    company_name: "JooMedia",
+    job: "CEO/Blogger",
+    email: "jessyralph@mail.com",
+    phone: "0801198765467",
+    company_site: "joomedia.com"
   },
   user_account_info: {
-    username: "nick84",
-    email: "nick.watson@loop.com",
+    username: "jooma",
+    email: "admin@joomedia.com",
     language: "English",
-    time_zone: "(GMT-11:00) Midway Island",
+    time_zone: "(GMT+01:00) West Central Africa",
     communication: {
       email: true,
       sms: true,

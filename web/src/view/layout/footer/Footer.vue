@@ -7,37 +7,30 @@
     >
       <div class="text-dark">
         <span class="text-muted font-weight-bold mr-2">
-          2020 &nbsp;&copy;&nbsp;
+          2021 &nbsp;&copy;&nbsp;
         </span>
         <a
-          href="http://keenthemes.com/metronic"
+          href="http://joomedia.com"
           target="_blank"
           class="text-dark-75 text-hover-primary"
         >
-          Keenthemes
+          JooMedia Inc. 
         </a>
       </div>
       <div class="nav nav-dark">
-        <a
-          href="http://keenthemes.com/metronic"
-          target="_blank"
-          class="nav-link pr-3 pl-0"
-        >
-          About
+        <a class="nav-link px-3">
+          Developed with 
+          <span class="svg-icon svg-icon-danger pr-1 pl-1">
+              <inline-svg src="media/svg/icons/General/Half-heart.svg" />
+          </span>
+            by
         </a>
         <a
-          href="http://keenthemes.com/metronic"
+          href="https://khaleb.dev"
           target="_blank"
-          class="nav-link px-3"
+          class="nav-link pl-0 pr-0"
         >
-          Team
-        </a>
-        <a
-          href="http://keenthemes.com/metronic"
-          target="_blank"
-          class="nav-link pl-3 pr-0"
-        >
-          Contact
+          Khaleb.dev
         </a>
       </div>
     </div>

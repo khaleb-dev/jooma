@@ -21,7 +21,7 @@
     </router-link>
 
     <router-link
-      to="/builder"
+      to="/create-post"
       v-slot="{ href, navigate, isActive, isExactActive }"
     >
       <li
@@ -35,7 +35,27 @@
       >
         <a :href="href" class="menu-link" @click="navigate">
           <i class="menu-icon flaticon2-expand"></i>
-          <span class="menu-text">Layout Builder</span>
+          <span class="menu-text">Create New Post</span>
+        </a>
+      </li>
+    </router-link>
+
+    <router-link
+      to="/manage-posts"
+      v-slot="{ href, navigate, isActive, isExactActive }"
+    >
+      <li
+        aria-haspopup="true"
+        data-menu-toggle="hover"
+        class="menu-item"
+        :class="[
+          isActive && 'menu-item-active',
+          isExactActive && 'menu-item-active'
+        ]"
+      >
+        <a :href="href" class="menu-link" @click="navigate">
+          <i class="menu-icon flaticon2-expand"></i>
+          <span class="menu-text">LManage Posts</span>
         </a>
       </li>
     </router-link>

@@ -18,7 +18,7 @@
         <div class="row m-0">
           <div class="col-12 col-sm text-center bg-light-primary px-6 py-8 rounded-xl mr-7 mb-7">
             <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
-              <inline-svg src="media/svg/icons/Communication/Add-user.svg" />
+              <inline-svg src="media/svg/icons/Shopping/Price1.svg" />
             </span>
             <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
               Total Tags
@@ -26,7 +26,7 @@
           </div>
           <div class="col-12 col-sm text-center bg-light-danger px-6 py-8 rounded-xl mr-7 mb-7">
             <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
-              <inline-svg src="media/svg/icons/Design/Layers.svg" />
+              <inline-svg src="media/svg/icons/Files/Group-folders.svg" />
             </span>
             <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">
               Total Groups
@@ -34,7 +34,7 @@
           </div>
           <div class="col-12 col-sm text-center bg-light-success px-6 py-8 rounded-xl mr-7 mb-7">
             <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
-              <inline-svg src="media/svg/icons/Communication/Urgent-mail.svg" />
+              <inline-svg src="media/svg/icons/Files/Selected-file.svg" />
             </span>
             <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">
               Total Post
@@ -42,7 +42,7 @@
           </div>
           <div class="col-12 col-sm text-center bg-light-warning px-6 py-8 rounded-xl mb-7">
             <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2">
-              <inline-svg src="media/svg/icons/Media/Equalizer.svg" />
+              <inline-svg src="media/svg/icons/Shopping/Chart-bar2.svg" />
             </span>
             <a href="#" class="text-warning font-weight-bold font-size-h6">
               Total Visits
@@ -67,7 +67,7 @@ export default {
       series: [
         {
           name: "Net Profit",
-          data: [30, 45, 32, 70, 40, 40, 40]
+          data: [10, 30, 59, 17, 27, 38, 45, 32, 80, 29, 38, 40, 40, 38, 70]
         }
       ]
     };

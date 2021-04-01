@@ -4,9 +4,9 @@
     "private": true,
     "description": "Sikha's blog dashboard - web version",
     "keywords": [
-      "blog",
-      "sikha",
-      "dashboard"
+        "blog",
+        "sikha",
+        "dashboard"
     ],
     "author": "khaleb.dev",
     "license": "Private",
@@ -17,8 +17,8 @@
         "rtl": "webpack --config webpack-rtl.config.js"
     },
     "repository": {
-      "type": "git"
-    }, 
+        "type": "git"
+    },
     "dependencies": {
         "@babel/polyfill": "^7.4.4",
         "@fortawesome/fontawesome-free": "^5.13.0",
@@ -47,6 +47,7 @@
         "vue-apexcharts": "^1.5.3",
         "vue-axios": "^2.1.4",
         "vue-cropperjs": "^4.1.0",
+        "vue-float-action-button": "^0.7.8",
         "vue-highlight.js": "^3.1.0",
         "vue-i18n": "^8.17.4",
         "vue-inline-svg": "^1.3.0",
