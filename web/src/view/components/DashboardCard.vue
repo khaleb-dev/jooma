@@ -18,33 +18,29 @@
             <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
               <inline-svg src="media/svg/icons/Shopping/Price1.svg" />
             </span>
-            <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
-              Total Tags
-            </a>
+            <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">Total Tags</a>
+            <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-2 d-block">59</span>
           </div>
           <div class="col-12 col-sm text-center bg-light-danger px-6 py-8 rounded-xl mr-7 mb-7">
             <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
               <inline-svg src="media/svg/icons/Files/Group-folders.svg" />
             </span>
-            <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">
-              Total Groups
-            </a>
+            <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">Total Groups</a>
+            <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-2 d-block">6</span>
           </div>
           <div class="col-12 col-sm text-center bg-light-success px-6 py-8 rounded-xl mr-7 mb-7">
             <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
               <inline-svg src="media/svg/icons/Files/Selected-file.svg" />
             </span>
-            <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">
-              Total Post
-            </a>
+            <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">Total Post</a>
+            <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-2 d-block">101</span>
           </div>
           <div class="col-12 col-sm text-center bg-light-warning px-6 py-8 rounded-xl mb-7">
             <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2">
               <inline-svg src="media/svg/icons/Shopping/Chart-bar2.svg" />
             </span>
-            <a href="#" class="text-warning font-weight-bold font-size-h6">
-              Total Visits
-            </a>
+            <a href="#" class="text-warning font-weight-bold font-size-h6">Total Visits</a>
+            <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-2 d-block">55098</span>
           </div>
         </div>
       </div>
