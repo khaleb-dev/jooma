@@ -14,9 +14,7 @@
 
       <div class="card-spacer mt-n25">
         <div class="row m-0">
-          <div
-            class="col-12 col-sm text-center bg-light-primary px-6 py-8 rounded-xl mr-7 mb-7"
-          >
+          <div class="col-12 col-sm text-center bg-light-primary px-6 py-8 rounded-xl mr-7 mb-7">
             <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
               <inline-svg src="media/svg/icons/Shopping/Price1.svg" />
             </span>
@@ -24,9 +22,7 @@
               Total Tags
             </a>
           </div>
-          <div
-            class="col-12 col-sm text-center bg-light-danger px-6 py-8 rounded-xl mr-7 mb-7"
-          >
+          <div class="col-12 col-sm text-center bg-light-danger px-6 py-8 rounded-xl mr-7 mb-7">
             <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
               <inline-svg src="media/svg/icons/Files/Group-folders.svg" />
             </span>
@@ -34,9 +30,7 @@
               Total Groups
             </a>
           </div>
-          <div
-            class="col-12 col-sm text-center bg-light-success px-6 py-8 rounded-xl mr-7 mb-7"
-          >
+          <div class="col-12 col-sm text-center bg-light-success px-6 py-8 rounded-xl mr-7 mb-7">
             <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
               <inline-svg src="media/svg/icons/Files/Selected-file.svg" />
             </span>
@@ -44,9 +38,7 @@
               Total Post
             </a>
           </div>
-          <div
-            class="col-12 col-sm text-center bg-light-warning px-6 py-8 rounded-xl mb-7"
-          >
+          <div class="col-12 col-sm text-center bg-light-warning px-6 py-8 rounded-xl mb-7">
             <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2">
               <inline-svg src="media/svg/icons/Shopping/Chart-bar2.svg" />
             </span>
