@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
+import { SET_BREADCRUMB } from "@/core/store/breadcrumbs.module";
 import CreateBlog from "@/view/components/CreateBlog.vue";
 
 export default {

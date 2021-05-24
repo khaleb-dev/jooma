@@ -52,15 +52,15 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "DashboardCard",
+  name: "DashboardStats",
   data() {
     return {
       strokeColor: "#D13647",
       chartOptions: {},
       series: [
         {
-          name: "Net Profit",
-          data: [10, 30, 59, 17, 27, 38, 45, 32, 80, 29, 38, 40, 40, 38, 70],
+          name: "",
+          data: [30, 59, 17, 27, 38, 45, 32, 80, 29, 38, 40, 40],
         },
       ],
     };
@@ -73,7 +73,7 @@ export default {
     this.chartOptions = {
       chart: {
         type: "area",
-        height: 200,
+        height: 300,
         toolbar: {
           show: false,
         },
@@ -111,7 +111,7 @@ export default {
         colors: [this.strokeColor],
       },
       xaxis: {
-        categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],
+        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"],
         axisBorder: {
           show: false,
         },
@@ -178,11 +178,11 @@ export default {
           fontSize: "12px",
           fontFamily: this.layoutConfig("font-family"),
         },
-        y: {
-          formatter: function (val) {
-            return "$" + val + " thousands";
-          },
-        },
+        // y: {
+        //   formatter: function (val) {
+        //     return "$" + val + " thousands";
+        //   },
+        // },
         marker: {
           show: false,
         },

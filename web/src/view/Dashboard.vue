@@ -2,20 +2,20 @@
   <div>
     <div class="row">
       <div class="col-12">
-        <DashboardCard></DashboardCard>
+        <DashboardStats></DashboardStats>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
-import DashboardCard from "@/view/components/DashboardCard.vue";
+import { SET_BREADCRUMB } from "@/core/store/breadcrumbs.module";
+import DashboardStats from "@/view/components/DashboardStats.vue";
 
 export default {
   name: "dashboard",
   components: {
-    DashboardCard
+    DashboardStats
   },
   mounted() {
     this.$store.dispatch(SET_BREADCRUMB, [{ title: "Dashboard" }]);

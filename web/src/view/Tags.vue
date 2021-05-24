@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
+import { SET_BREADCRUMB } from "@/core/store/breadcrumbs.module";
 import TagData from "@/view/components/TagData.vue";
 
 export default {
@@ -35,7 +35,7 @@ export default {
   data () {
     return {
       isTagSelected: false,
-      selectedType: ''
+      selectedTag: ''
     }
   },
   mounted() {
@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     showTagData: function(tagId){
-      this.selectedType = tagId,
+      this.selectedTag = tagId,
       this.isTagSelected = true
     }
   }

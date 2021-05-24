@@ -5,11 +5,11 @@
         <div class="card-body d-flex flex-column p-0">
           <div class="d-flex align-items-center justify-content-between card-spacer">
             <div class="d-flex flex-column mr-2">
-              <a href="#" class="text-dark-75 text-hover-warning font-weight-bolder font-size-h5">Selected Tag name</a>
+              <a href="#" class="text-dark-75 text-hover-success font-weight-bolder font-size-h5">Selected Group name</a>
               <span class="text-muted font-weight-bold mt-2">Description</span>
             </div>
-            <span class="symbol symbol-light-warning symbol-45">
-              <span class="symbol-label font-weight-bolder font-size-h6">18</span>
+            <span class="symbol symbol-light-success symbol-45">
+              <span class="symbol-label font-weight-bolder font-size-h6">29</span>
             </span>
           </div>
         </div>
@@ -23,18 +23,18 @@
               <tr>
                 <td class="p-0 py-4">
                   <div class="symbol symbol-60 symbol-2by3 flex-shrink-0 mr-4">
-                    <div class="symbol-label" style="background-image: url('media/stock-600x400/img-17.jpg')"></div>
+                    <div class="symbol-label" style="background-image: url('media/stock-600x400/img-10.jpg')"></div>
                   </div>
                 </td>
                 <td class="pl-0">
                   <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Post Title</a>
                   <span class="text-muted font-weight-bold d-block">post extract</span>
                 </td>
-                <td class="text-right pr-0">
-                  <span class="text-dark-75 font-weight-bolder d-block font-size-lg">Group</span>
+                <td class="text-right">
+                  <span class="text-muted font-weight-bold">tag, tag, tag</span>
                 </td>
                 <td class="text-right">
-                  <span class="label label-lg label-light-danger label-inline">status</span>
+                  <span class="label label-lg label-light-warning label-inline">status</span>
                 </td>
                 <td class="text-center">
                   <span class="label label-lg label-light-primary label-inline font-weight-bolder font-size-lg">56</span>
@@ -99,10 +99,10 @@
 
 <script>
 export default {
-  name: "TagData",
+  name: "GroupData",
   data () {
     return {
-      
+
     }
   },
   methods: {
