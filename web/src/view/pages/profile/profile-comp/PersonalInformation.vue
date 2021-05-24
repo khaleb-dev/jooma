@@ -207,7 +207,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { UPDATE_PERSONAL_INFO } from "@/core/services/store/profile.module";
+import { UPDATE_PERSONAL_INFO } from "@/core/store/profile.module";
 
 export default {
   name: "PersonalInformation",

@@ -117,7 +117,7 @@
 
 <script>
 import { mapState } from "vuex";
-import { LOGIN, LOGOUT } from "@/core/services/store/auth.module";
+import { LOGIN, LOGOUT } from "@/core/store/auth.module";
 
 import { validationMixin } from "vuelidate";
 import { email, minLength, required } from "vuelidate/lib/validators";

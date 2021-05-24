@@ -120,8 +120,8 @@
 
 <script>
 import { mapState } from "vuex";
-import { REGISTER } from "@/core/services/store/auth.module";
-import { LOGOUT } from "@/core/services/store/auth.module";
+import { REGISTER } from "@/core/store/auth.module";
+import { LOGOUT } from "@/core/store/auth.module";
 
 import { validationMixin } from "vuelidate";
 import { email, required, minLength } from "vuelidate/lib/validators";

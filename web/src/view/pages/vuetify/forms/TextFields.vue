@@ -433,7 +433,7 @@
 
 <script>
 import KTCodePreview from "@/view/content/CodePreview.vue";
-import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
+import { SET_BREADCRUMB } from "@/core/store/breadcrumbs.module";
 
 // code6
 const defaultForm = Object.freeze({

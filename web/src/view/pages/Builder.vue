@@ -520,7 +520,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
+import { SET_BREADCRUMB } from "@/core/store/breadcrumbs.module";
 
 export default {
   name: "builder",

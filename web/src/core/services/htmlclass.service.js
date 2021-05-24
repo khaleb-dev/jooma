@@ -2,9 +2,9 @@ import objectPath from "object-path";
 import {
   ADD_BODY_CLASSNAME,
   REMOVE_BODY_CLASSNAME
-} from "@/core/services/store/htmlclass.module";
-import store from "@/core/services/store";
-import { ADD_CLASSNAME } from "@/core/services/store/htmlclass.module";
+} from "@/core/store/htmlclass.module";
+import store from "@/core/store";
+import { ADD_CLASSNAME } from "@/core/store/htmlclass.module";
 
 const HtmlClass = {
   config: null,

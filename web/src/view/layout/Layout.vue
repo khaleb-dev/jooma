@@ -65,7 +65,7 @@ import Loader from "@/view/content/Loader.vue";
 import {
   ADD_BODY_CLASSNAME,
   REMOVE_BODY_CLASSNAME
-} from "@/core/services/store/htmlclass.module.js";
+} from "@/core/store/htmlclass.module.js";
 
 export default {
   name: "Layout",

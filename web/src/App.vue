@@ -23,7 +23,7 @@
 </style>
 
 <script>
-import { OVERRIDE_LAYOUT_CONFIG } from "@/core/services/store/config.module";
+import { OVERRIDE_LAYOUT_CONFIG } from "@/core/store/config.module";
 
 export default {
   name: "MetronicVue",

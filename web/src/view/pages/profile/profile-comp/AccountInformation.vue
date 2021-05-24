@@ -211,7 +211,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { UPDATE_ACCOUNT_INFO } from "@/core/services/store/profile.module";
+import { UPDATE_ACCOUNT_INFO } from "@/core/store/profile.module";
 
 export default {
   name: "AccountInformation",

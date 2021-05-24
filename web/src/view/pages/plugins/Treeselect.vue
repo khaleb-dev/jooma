@@ -202,7 +202,7 @@ import KTTreeSelect10 from "@/view/pages/plugins/treeselect/Treeselect10";
 import KTTreeSelect11 from "@/view/pages/plugins/treeselect/Treeselect11";
 import KTTreeSelect12 from "@/view/pages/plugins/treeselect/Treeselect12";
 import KTTreeSelect13 from "@/view/pages/plugins/treeselect/Treeselect13";
-import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
+import { SET_BREADCRUMB } from "@/core/store/breadcrumbs.module";
 
 export default {
   data() {

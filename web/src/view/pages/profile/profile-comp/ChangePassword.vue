@@ -145,7 +145,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { UPDATE_PASSWORD } from "@/core/services/store/auth.module";
+import { UPDATE_PASSWORD } from "@/core/store/auth.module";
 import KTUtil from "@/assets/js/components/util";
 
 import formValidation from "@/assets/plugins/formvalidation/dist/es6/core/Core";

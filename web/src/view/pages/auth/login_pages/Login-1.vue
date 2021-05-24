@@ -299,7 +299,7 @@ import SubmitButton from "@/assets/plugins/formvalidation/dist/es6/plugins/Submi
 
 import KTUtil from "@/assets/js/components/util";
 import { mapGetters, mapState } from "vuex";
-import { LOGIN, LOGOUT, REGISTER } from "@/core/services/store/auth.module";
+import { LOGIN, LOGOUT, REGISTER } from "@/core/store/auth.module";
 import Swal from "sweetalert2";
 
 export default {

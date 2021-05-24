@@ -249,7 +249,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
+import { SET_BREADCRUMB } from "@/core/store/breadcrumbs.module";
 import KTDropdown2 from "@/view/content/dropdown/Dropdown2";
 import KTProfileOverview from "@/view/pages/profile/profile-comp-1/ProfileOverview";
 import KTPersonalInformation from "@/view/pages/profile/profile-comp/PersonalInformation";

@@ -116,7 +116,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
+import { SET_BREADCRUMB } from "@/core/store/breadcrumbs.module";
 import Dropdown3 from "@/view/content/dropdown/Dropdown3";
 import Widget1 from "@/view/pages/profile/profile-comp-4/Widget1";
 import Widget2 from "@/view/pages/profile/profile-comp-4/Widget2";

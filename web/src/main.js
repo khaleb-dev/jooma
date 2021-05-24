@@ -1,11 +1,11 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "@/core/services/store";
+import store from "@/core/store";
 import ApiService from "@/core/services/api.service";
 import MockService from "@/core/mock/mock.service";
-import { VERIFY_AUTH } from "@/core/services/store/auth.module";
-import { RESET_LAYOUT_CONFIG } from "@/core/services/store/config.module";
+import { VERIFY_AUTH } from "@/core/store/auth.module";
+import { RESET_LAYOUT_CONFIG } from "@/core/store/config.module";
 
 Vue.config.productionTip = false;
 
