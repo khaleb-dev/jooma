@@ -18,12 +18,12 @@ export default new Router({
         {
           path: "/create-post",
           name: "create-post",
-          component: () => import("@/view/Blog")
+          component: () => import("@/view/BlogEditor")
         },
         {
           path: "/manage/posts",
           name: "manage-post",
-          component: () => import("@/view/Blog")
+          component: () => import("@/view/BlogPosts")
         },
         {
           path: "/manage/groups",

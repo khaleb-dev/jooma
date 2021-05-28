@@ -2,7 +2,7 @@
   <div>
     <div class="row">
       <div class="col-12">
-        <CreateBlog></CreateBlog>
+        <EditorForm></EditorForm>
       </div>
     </div>
   </div>
@@ -10,15 +10,15 @@
 
 <script>
 import { SET_BREADCRUMB } from "@/core/store/breadcrumbs.module";
-import CreateBlog from "@/view/components/CreateBlog.vue";
+import EditorForm from "@/view/components/EditorForm.vue";
 
 export default {
-  name: "blog",
+  name: "BlogEditor",
   components: {
-    CreateBlog,
+    EditorForm,
   },
   mounted() {
-    this.$store.dispatch(SET_BREADCRUMB, [{ title: "Blog" }]);
+    this.$store.dispatch(SET_BREADCRUMB, [{ title: "Create Post" }]);
   },
 };
 </script>
