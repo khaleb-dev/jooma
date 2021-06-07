@@ -14,7 +14,7 @@ return [
                     'host'     => 'localhost',
                     'user'     => 'root',
                     'password' => '',
-                    'dbname'   => 'publogger',
+                    'dbname'   => 'joo_media',
                     'port'     => '3306',
                 ],
             ],
