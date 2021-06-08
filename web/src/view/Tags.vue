@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import { SET_BREADCRUMB } from "@/core/store/breadcrumbs.module";
 import TagData from "@/view/components/TagData.vue";
 
@@ -41,7 +42,15 @@ export default {
   mounted() {
     this.$store.dispatch(SET_BREADCRUMB, [{ title: "Tags" }]);
   },
+  created() {
+    //if (this.newsletters.length <= 0) 
+      this.fetchAllTags()
+    //}
+  },
   methods: {
+    ...mapActions('appRequest', [
+        'fetchAllTags'
+    ]),
     showTagData: function(tagId){
       this.selectedTag = tagId,
       this.isTagSelected = true
