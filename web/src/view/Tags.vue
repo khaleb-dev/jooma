@@ -41,19 +41,18 @@ export default {
   },
   mounted() {
     this.$store.dispatch(SET_BREADCRUMB, [{ title: "Tags" }]);
-  },
-  created() {
-    //if (this.newsletters.length <= 0) 
-      this.fetchAllTags()
-    //}
+    this.fetchAllTags();
   },
   methods: {
-    ...mapActions('appRequest', [
+    ...mapActions([
         'fetchAllTags'
     ]),
     showTagData: function(tagId){
       this.selectedTag = tagId,
       this.isTagSelected = true
+    },
+    loadTags: function () {
+      this.fetchAllTags();
     }
   }
 };

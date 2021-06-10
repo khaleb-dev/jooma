@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "@/core/store";
+// import { store } from './core/store/index'
 import ApiService from "@/core/services/api.service";
 import MockService from "@/core/mock/mock.service";
 import { VERIFY_AUTH } from "@/core/store/auth.module";

@@ -1,4 +1,4 @@
-import { AppRequestService, AppRequestError } from '@/services/app-request.service'
+import { TagsService, TagsError } from '../services/tags.service'
 
 const state = {
     tags: [],
@@ -44,11 +44,9 @@ const actions = {
     async fetchAllTags({ commit }) {
         commit('startRequest')
         try {
-            const response = await AppRequestService.fetchAllTags()
-            console.log(data);
-            if (response.hasOwnProperty('messages')) {
-                console.log(data);
-                //response.type = data.type
+            const response = await TagsService.fetchAllTags()
+            console.log(response);
+            if (response.hasOwnProperty('messages')) {                
                 commit('fetchAllTagsSuccess', response)
 
                 return true
@@ -58,7 +56,7 @@ const actions = {
                 return false
             }
         } catch (e) {
-            if (e instanceof AppRequestError) {
+            if (e instanceof TagsError) {
                 commit('requestError', {status: e.errorCode, message: e.message})
             }
 
@@ -92,8 +90,8 @@ const mutations = {
     },
 }
 
-export const appRequest = {
-    namespaced: false,
+export const tags = {
+    namespaced: true,
     state,
     getters,
     actions,

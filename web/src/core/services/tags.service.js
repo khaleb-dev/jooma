@@ -1,7 +1,7 @@
 import ApiService from './api.service'
 // import { StorageService } from './storage.service'
 
-class AppRequestError extends Error {
+class TagsError extends Error {
     constructor(errorCode, message) {
         super(message)
         this.name = this.constructor.name
@@ -10,8 +10,8 @@ class AppRequestError extends Error {
     }
 }
 
-const AppRequestService = {
-    BASE_URL: process.env.VUE_APP_BASE_URL,
+const TagsService = {
+    // BASE_URL: process.env.VUE_API_BASE_URL,
     
     /**
      * Fetch All tags
@@ -20,11 +20,12 @@ const AppRequestService = {
      */
     fetchAllTags: async function() {
         try {
-            const response = await ApiService.get(`${this.BASE_URL}/tags`)
+            // const response = await ApiService.get(`${this.BASE_URL}/tags`)
+            const response = await ApiService.get(`/tags`)
             return response.data
         }
         catch (error) {
-            throw new AppRequestError(error.response.status, error.response.data.detail)
+            throw new TagsError(error.response.status, error.response.data.detail)
         }
     },
 
@@ -36,14 +37,15 @@ const AppRequestService = {
      */
     fetchTagById: async function(id) {
         try {
-            const response = await ApiService.get(`${this.BASE_URL}/tag/${id}`)
+            // const response = await ApiService.get(`${this.BASE_URL}/tag/${id}`)
+            const response = await ApiService.get(`/tag/${id}`)
             return response.data
         }
         catch (error) {
-            throw new AppRequestError(error.response.status, error.response.data.detail)
+            throw new TagsError(error.response.status, error.response.data.detail)
         }
     }
     
 }
 
-export { AppRequestService, AppRequestError }
+export { TagsService, TagsError }
