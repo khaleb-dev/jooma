@@ -18,7 +18,7 @@ use Application\Entity\Tags;
 use Application\Entity\User;
 use Application\CustomObject\simple_html_dom;
 
-class BackendApiManager
+class ApiManager
 {
     public function __construct($entityManager, $utility)
     {

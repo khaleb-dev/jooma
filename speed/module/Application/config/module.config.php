@@ -28,7 +28,7 @@ return [
                     ],
                 ],
             ],
-            'frontend-api' => [
+            'web' => [
                 'type' => Segment::class,
                 'options' => [
                     'route'    => '/:action[/:id]',
@@ -42,17 +42,17 @@ return [
                     ],
                 ],
             ],
-            'backend-api' => [
+            'api' => [
                 'type' => Segment::class,
                 'options' => [
-                    'route'    => '/base/:action[/:id]',
+                    'route'    => '/v1/:action[/:id]',
                     'constraints' => [
                         'api-key' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[a-zA-Z0-9_-]*',
                     ],
                     'defaults' => [
-                        'controller'    => Controller\BackendApiController::class,
+                        'controller'    => Controller\ApiController::class,
                         'action'        => 'index',
                     ],
                 ],
@@ -62,13 +62,13 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
-            Controller\BackendApiController::class => Controller\Factory\BackendApiControllerFactory::class,
+            Controller\ApiController::class => Controller\Factory\ApiControllerFactory::class,
             Controller\FrontendApiController::class => Controller\Factory\FrontendApiControllerFactory::class,
         ],
     ],
     'service_manager' => [
         'factories' => [
-            Service\BackendApiManager::class => Service\Factory\BackendApiManagerFactory::class,
+            Service\ApiManager::class => Service\Factory\ApiManagerFactory::class,
             Service\FrontendApiManager::class => Service\Factory\FrontendApiManagerFactory::class,
         ],
     ],

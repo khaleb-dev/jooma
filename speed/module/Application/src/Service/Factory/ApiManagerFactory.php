@@ -10,17 +10,17 @@ declare(strict_types=1);
 namespace Application\Service\Factory;
 
 use Interop\Container\ContainerInterface;
-use Application\Service\BackendApiManager;
+use Application\Service\ApiManager;
 use Application\CustomObject\Utility;
 
 /**
- * This is the factory class for BackendApiManager service. The purpose of the factory
+ * This is the factory class for ApiManager service. The purpose of the factory
  * is to instantiate the service and pass it dependencies (inject dependencies).
  */
-class BackendApiManagerFactory
+class ApiManagerFactory
 {
     /**
-     * This method creates the BackendApiManager service and returns its instance. 
+     * This method creates the ApiManager service and returns its instance. 
      */
 
     public function __invoke(ContainerInterface $container)
@@ -28,6 +28,6 @@ class BackendApiManagerFactory
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
         $utility = new Utility();
         
-        return new BackendApiManager($entityManager, $utility);
+        return new ApiManager($entityManager, $utility);
     }
 }

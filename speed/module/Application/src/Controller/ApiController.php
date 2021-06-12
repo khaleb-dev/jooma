@@ -24,12 +24,12 @@ use Application\Form\TagForm;
 use Application\Form\GroupForm;
 use Application\Form\PostForm;
 
-class BackendApiController extends AbstractActionController
+class ApiController extends AbstractActionController
 {
-    public function __construct($entityManager, $backendApiManager, $utility)
+    public function __construct($entityManager, $apiManager, $utility)
     {
         $this->entityManager = $entityManager;
-        $this->backendApiManager = $backendApiManager;
+        $this->apiManager = $apiManager;
         $this->utility = $utility;
     }
 
@@ -80,11 +80,11 @@ class BackendApiController extends AbstractActionController
                         if (empty($tag)) {
                             return new JsonModel($this->response(404, 'NOT FOUND'));
                         }
-                        $tag = $this->backendApiManager->updateTag($tag, $data);
+                        $tag = $this->apiManager->updateTag($tag, $data);
                         $response = $this->response(200, 'OK');
                     }
                     else {
-                        $tag = $this->backendApiManager->createTag($data);
+                        $tag = $this->apiManager->createTag($data);
                         $response = $this->response(201, 'CREATED');
                     }
                     $tagData = [];
@@ -128,7 +128,7 @@ class BackendApiController extends AbstractActionController
                 $response = $this->response(404, 'NOT FOUND');
             }
             else {
-                $this->backendApiManager->deleteTag($tag);
+                $this->apiManager->deleteTag($tag);
                 $response = $this->response(200, 'OK');
             }
         }
@@ -204,11 +204,11 @@ class BackendApiController extends AbstractActionController
                         if (empty($group)) {
                             return new JsonModel($this->response(404, 'NOT FOUND'));
                         }
-                        $group = $this->backendApiManager->updateGroup($group, $data);
+                        $group = $this->apiManager->updateGroup($group, $data);
                         $response = $this->response(200, 'OK');
                     }
                     else {
-                        $group = $this->backendApiManager->createGroup($data);
+                        $group = $this->apiManager->createGroup($data);
                         $response = $this->response(201, 'CREATED');
                     }
                     $groupData = [];
@@ -254,7 +254,7 @@ class BackendApiController extends AbstractActionController
                 $response = $this->response(404, 'NOT FOUND');
             }
             else {
-                $this->backendApiManager->deleteGroup($group);
+                $this->apiManager->deleteGroup($group);
                 $response = $this->response(200, 'OK');
             }
         }
@@ -326,7 +326,7 @@ class BackendApiController extends AbstractActionController
 
             $upload = CustomFileUpload::upload($data, $acceptedParams);
             if ($upload['code'] == 200) {
-                $saved = $this->backendApiManager->saveImage($upload['fileName']);
+                $saved = $this->apiManager->saveImage($upload['fileName']);
                 if ($saved) {
                     $response = $this->response(201, 'CREATED');
                 }
@@ -400,7 +400,7 @@ class BackendApiController extends AbstractActionController
             }
             else {
                 CustomFileUpload::delete('./public/i1m2a3g4e5s/', $image->getName());
-                $this->backendApiManager->deleteImage($image);
+                $this->apiManager->deleteImage($image);
                 $response = $this->response(200, 'OK');
             }
         }
@@ -485,7 +485,7 @@ class BackendApiController extends AbstractActionController
                             $response = $this->response(404, 'NOT FOUND');
                         }
                         else {
-                            $post = $this->backendApiManager->updatePost($post, $data);
+                            $post = $this->apiManager->updatePost($post, $data);
                             if ($post == false) {
                                 $response = $this->response(406, 'NOT ACCEPTABLE');
                                 $response['message'] = 'Possible Reasons: Unable to find default group.';
@@ -498,7 +498,7 @@ class BackendApiController extends AbstractActionController
                         }
                     }
                     else { // create new record
-                        $post = $this->backendApiManager->createPost($data);
+                        $post = $this->apiManager->createPost($data);
                         if ($post == false) {
                             $response = $this->response(406, 'NOT ACCEPTABLE');
                             $response['message'] = 'Possible Reasons: Unable to find default group.';
@@ -619,7 +619,7 @@ class BackendApiController extends AbstractActionController
                     $response = $this->response(404, 'NOT FOUND');
                 }
                 else {
-                    $post = $this->backendApiManager->switchStatus($post);
+                    $post = $this->apiManager->switchStatus($post);
                     if ($post) {
                         $response = $this->response(200, 'OK');
                         // add post data to json response
