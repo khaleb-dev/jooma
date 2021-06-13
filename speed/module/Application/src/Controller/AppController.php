@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Application\Controller;
 
 use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\ViewModel;
 use Laminas\View\Model\JsonModel;
 use Application\CustomObject\simple_html_dom;
 use Application\Entity\Images;
@@ -23,20 +24,44 @@ use Application\Form\TagForm;
 use Application\Form\GroupForm;
 use Application\Form\PostForm;
 
-class FrontendApiController extends AbstractActionController
+class AppController extends AbstractActionController
 {
-    public function __construct($entityManager, $frontendApiManager, $utility)
+    public function __construct($entityManager, $appManager, $utility)
     {
         $this->entityManager = $entityManager;
-        $this->frontendApiManager = $frontendApiManager;
+        $this->appManager = $appManager;
         $this->utility = $utility;
     }
 
-    public function indexAction() : JsonModel
+    public function dashboardAction() : ViewModel
     {
-        return new JsonModel([]);
+        $this->layout('layout/app');
+        return new ViewModel([]);
     }
-    
+
+    public function managePostsAction() : ViewModel
+    {
+        $this->layout('layout/app');
+        return new ViewModel([]);
+    }
+
+    public function manageTagsAction() : ViewModel
+    {
+        $this->layout('layout/app');
+        return new ViewModel([]);
+    }
+
+    public function manageGroupsAction() : ViewModel
+    {
+        $this->layout('layout/app');
+        return new ViewModel([]);
+    }
+
+    public function loginAction() : ViewModel
+    {
+        $this->layout('layout/auth');
+        return new ViewModel([]);
+    }
     /**
      * set response
      */
@@ -230,7 +255,7 @@ class FrontendApiController extends AbstractActionController
             else {
                 $response = $this->response(200, 'OK');
                 // increment the number of views
-                $post = $this->frontendApiManager->incrementPostView($post);
+                $post = $this->appManager->incrementPostView($post);
                 // add post data to json response
                 $response['postData'] = $this->buildPostData($post);
             }
@@ -336,6 +361,4 @@ class FrontendApiController extends AbstractActionController
         return new JsonModel($response);
     }
 
-
-    
 }

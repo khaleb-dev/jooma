@@ -1,0 +1,51 @@
+<?php
+/**
+ * @var Laminas\View\Renderer\PhpRenderer $this
+ */
+?>
+<?= $this->doctype() ?>
+<html lang="en">
+    <head>
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<?= $this->headTitle('Sikha')->setSeparator(' :: ')->setAutoEscape(false) ?>
+
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+            ->appendName('keywords', '')
+	        ->appendName('description', '')
+	        ->appendName('language', 'English')
+	        ->appendName('author', 'Khaleb Great')
+        ?>
+
+        
+        <?= $this->headLink(['rel' => 'stylesheet', 'href' => 'https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700']) ?>
+
+        <?php
+            echo $this->headLink(['rel' => 'shortcut icon', 'href' => $this->basePath() . '/assets/images/logo.png'])
+            ->offsetSetStylesheet(20, 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+            ->offsetSetStylesheet(10, 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css');
+        ?>
+
+		<link href="assets/css/pages/login/classic/login-5.css" rel="stylesheet" type="text/css" />
+		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Global Theme Styles-->
+		<!--begin::Layout Themes(used by all pages)-->
+		<link href="assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+        
+		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+	</head>
+    <body>
+
+        <center>Auth layout.phtml</center>
+
+		<?= $this->content ?>
+
+        <?= $this->inlineScript() ?>
+    </body>
+</html>

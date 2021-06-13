@@ -12,9 +12,19 @@ namespace Application\Controller;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 
-class IndexController extends AbstractActionController
+class WebController extends AbstractActionController
 {
     public function indexAction() : ViewModel
+    {
+        return new ViewModel([]);
+    }
+    
+    public function contactAction() : ViewModel
+    {
+        return new ViewModel([]);
+    }
+    
+    public function aboutAction() : ViewModel
     {
         return new ViewModel([]);
     }

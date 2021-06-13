@@ -12,48 +12,180 @@ namespace Application;
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
-use Laminas\ServiceManager\Factory\InvokableFactory;
 use Laminas\Router\Http\Hostname;
+
+$domainParts = explode(".",$_SERVER['SERVER_NAME']);
+if($domainParts[0] == 'api' || $domainParts[0] == 'admin'){
+    unset($domainParts[0]);
+}
+$domainName = count($domainParts) > 1 ? implode('.', $domainParts) : implode('', $domainParts);
 
 return [
     'router' => [
         'routes' => [
-            'home' => [
-                'type'    => Literal::class,
+            'web' => [
+                'type' => Hostname::class,
                 'options' => [
-                    'route'    => '/',
+                    'route' => $domainName,
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action'     => 'index',
                     ],
                 ],
-            ],
-            'web' => [
-                'type' => Segment::class,
-                'options' => [
-                    'route'    => '/:action[/:id]',
-                    'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[a-zA-Z0-9_-]*',
+                'may_terminate' => true,
+                'child_routes' => [
+                    'home' => [
+                        'type'    => Literal::class,
+                        'options' => [
+                            'route'    => '/',
+                            'defaults' => [
+                                'controller' => Controller\WebController::class,
+                                'action'     => 'index',
+                            ],
+                        ],
                     ],
+                    'contact' => [
+                        'type' => Literal::class,
+                        'options' => [
+                            'route'    => '/contact',
+                            'defaults' => [
+                                'controller' => Controller\WebController::class,
+                                'action'     => 'contact',
+                            ],
+                        ],
+                    ],
+                    'about' => [
+                        'type' => Literal::class,
+                        'options' => [
+                            'route'    => '/about',
+                            'defaults' => [
+                                'controller' => Controller\WebController::class,
+                                'action'     => 'about',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'app' => [
+                'type' => Hostname::class,
+                'options' => [
+                    'route' => 'admin.'.$domainName,
                     'defaults' => [
-                        'controller'    => Controller\FrontendApiController::class,
-                        'action'        => 'index',
+                        'controller' => Controller\AppController::class,
+                        'action'     => 'dashboard',
+                    ],
+                ],
+                'may_terminate' => false,
+                'child_routes' => [
+                    'app-home' => [
+                        'type'    => Literal::class,
+                        'options' => [
+                            'route'    => '/',
+                            'defaults' => [
+                                'controller' => Controller\AppController::class,
+                                'action'     => 'dashboard',
+                            ],
+                        ],
+                    ],
+                    'dashboard' => [
+                        'type'    => Literal::class,
+                        'options' => [
+                            'route'    => '/dashboard[/]',
+                            'defaults' => [
+                                'controller' => Controller\AppController::class,
+                                'action'     => 'dashboard',
+                            ],
+                        ],
+                    ],
+                    'manage-tags' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => 'manage/tags[/:id]',
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => [
+                                'controller'    => Controller\AppController::class,
+                                'action'        => 'manage-tags',
+                            ],
+                        ],
+                    ],
+                    'manage-groups' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => 'manage/groups[/:id]',
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => [
+                                'controller'    => Controller\AppController::class,
+                                'action'        => 'manage-groups',
+                            ],
+                        ],
+                    ],
+                    'manage-posts' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => 'manage/posts[/:id]',
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => [
+                                'controller'    => Controller\AppController::class,
+                                'action'        => 'manage-posts',
+                            ],
+                        ],
+                    ],
+                    'login' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => 'login[/]',
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => [
+                                'controller'    => Controller\AppController::class,
+                                'action'        => 'login',
+                            ],
+                        ],
                     ],
                 ],
             ],
             'api' => [
-                'type' => Segment::class,
+                'type' => Hostname::class,
                 'options' => [
-                    'route'    => '/v1/:action[/:id]',
-                    'constraints' => [
-                        'api-key' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[a-zA-Z0-9_-]*',
-                    ],
+                    'route' => 'api.'.$domainName,
                     'defaults' => [
-                        'controller'    => Controller\ApiController::class,
-                        'action'        => 'index',
+                        'controller' => Controller\ApiController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+                'may_terminate' => false,
+                'child_routes' => [
+                    'api-home' => [
+                        'type'    => Literal::class,
+                        'options' => [
+                            'route'    => '/',
+                            'defaults' => [
+                                'controller' => Controller\ApiController::class,
+                                'action'     => 'index',
+                            ],
+                        ],
+                    ],
+                    'api-action' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/v1/:action[/:id]',
+                            'constraints' => [
+                                'api-key' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => [
+                                'controller'    => Controller\ApiController::class,
+                                'action'        => 'index',
+                            ],
+                        ],
                     ],
                 ],
             ],
@@ -61,15 +193,16 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => InvokableFactory::class,
+            Controller\WebController::class => Controller\Factory\WebControllerFactory::class,
+            Controller\AppController::class => Controller\Factory\AppControllerFactory::class,
             Controller\ApiController::class => Controller\Factory\ApiControllerFactory::class,
-            Controller\FrontendApiController::class => Controller\Factory\FrontendApiControllerFactory::class,
         ],
     ],
     'service_manager' => [
         'factories' => [
+            Service\WebManager::class => Service\Factory\WebManagerFactory::class,
+            Service\AppManager::class => Service\Factory\AppManagerFactory::class,
             Service\ApiManager::class => Service\Factory\ApiManagerFactory::class,
-            Service\FrontendApiManager::class => Service\Factory\FrontendApiManagerFactory::class,
         ],
     ],
     // We register module-provided controller plugins under this key.
@@ -91,7 +224,7 @@ return [
         'exception_template'       => 'error/index',
         'template_map' => [
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'Application/index/index' => __DIR__ . '/../view/Application/index/index.phtml',
+            'Application/web/index'   => __DIR__ . '/../view/Application/web/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ],

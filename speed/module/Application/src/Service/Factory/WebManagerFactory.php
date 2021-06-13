@@ -10,24 +10,24 @@ declare(strict_types=1);
 namespace Application\Service\Factory;
 
 use Interop\Container\ContainerInterface;
-use Application\Service\ApiManager;
+use Application\Service\WebManager;
 use Application\CustomObject\Utility;
 
 /**
- * This is the factory class for ApiManager service. The purpose of the factory
+ * This is the factory class for WebManager service. The purpose of the factory
  * is to instantiate the service and pass it dependencies (inject dependencies).
  */
-class ApiManagerFactory
+class WebManagerFactory
 {
     /**
-     * This method creates the ApiManager service and returns its instance. 
+     * This method creates the WebManager service and returns its instance. 
      */
 
-    public function __invoke(ContainerInterface $container) : ApiManager
+    public function __invoke(ContainerInterface $container) : WebManager
     {
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
         $utility = new Utility();
         
-        return new ApiManager($entityManager, $utility);
+        return new WebManager($entityManager, $utility);
     }
 }
