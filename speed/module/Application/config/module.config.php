@@ -90,7 +90,7 @@ return [
                     'dashboard' => [
                         'type'    => Literal::class,
                         'options' => [
-                            'route'    => '/dashboard[/]',
+                            'route'    => '/dashboard',
                             'defaults' => [
                                 'controller' => Controller\AppController::class,
                                 'action'     => 'dashboard',
@@ -100,7 +100,7 @@ return [
                     'manage-tags' => [
                         'type' => Segment::class,
                         'options' => [
-                            'route'    => 'manage/tags[/:id]',
+                            'route'    => '/manage/tags[/:id]',
                             'constraints' => [
                                 'id' => '[a-zA-Z0-9_-]*',
                             ],
@@ -113,7 +113,7 @@ return [
                     'manage-groups' => [
                         'type' => Segment::class,
                         'options' => [
-                            'route'    => 'manage/groups[/:id]',
+                            'route'    => '/manage/groups[/:id]',
                             'constraints' => [
                                 'id' => '[a-zA-Z0-9_-]*',
                             ],
@@ -126,7 +126,7 @@ return [
                     'manage-posts' => [
                         'type' => Segment::class,
                         'options' => [
-                            'route'    => 'manage/posts[/:id]',
+                            'route'    => '/manage/posts[/:id]',
                             'constraints' => [
                                 'id' => '[a-zA-Z0-9_-]*',
                             ],
@@ -136,16 +136,16 @@ return [
                             ],
                         ],
                     ],
-                    'login' => [
+                    'auth' => [
                         'type' => Segment::class,
                         'options' => [
-                            'route'    => 'login[/]',
+                            'route'    => '/auth',
                             'constraints' => [
                                 'id' => '[a-zA-Z0-9_-]*',
                             ],
                             'defaults' => [
                                 'controller'    => Controller\AppController::class,
-                                'action'        => 'login',
+                                'action'        => 'auth',
                             ],
                         ],
                     ],

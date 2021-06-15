@@ -57,7 +57,7 @@ class AppController extends AbstractActionController
         return new ViewModel([]);
     }
 
-    public function loginAction() : ViewModel
+    public function authAction() : ViewModel
     {
         $this->layout('layout/auth');
         return new ViewModel([]);
