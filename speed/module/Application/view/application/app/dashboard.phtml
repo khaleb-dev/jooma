@@ -7,12 +7,7 @@ $this->headTitle('Dashboard');
 
 ?>
 
-<div>
-    <p>
-        <h1>
-            <center>
-                Sikha - Dashboard Page
-            </center>
-        </h1>
-    </p>
-</div>
+<?php
+    $this->headScript()
+        ->offsetSetFile(41, $this->basePath('assets/js/pages/widgets.js'))
+?>
