@@ -6,3 +6,4 @@ data/cache/*
 phpunit.xml
 .phpunit.result.cache
 public/i1m2a3g4e5s/
+public/assets/media
