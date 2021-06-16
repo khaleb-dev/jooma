@@ -47,14 +47,40 @@ class AppController extends AbstractActionController
 
     public function manageTagsAction() : ViewModel
     {
+        $tagId = $this->params()->fromRoute('id', null);
+        // load all tags
+        if(empty($tagId)){
+            
+            $template = 'application/app/tags';
+            $view = new ViewModel([]);
+        }
+        else { // load tag by id
+
+            $template = 'application/app/tag-data';
+            $view = new ViewModel([]);
+        }
         $this->layout('layout/app');
-        return new ViewModel([]);
+        $view->setTemplate($template);
+        return $view;
     }
 
     public function manageGroupsAction() : ViewModel
     {
+        $groupId = $this->params()->fromRoute('id', null);
+        // load all groups
+        if(empty($groupId)){
+            
+            $template = 'application/app/groups';
+            $view = new ViewModel([]);
+        }
+        else { // load group by id
+
+            $template = 'application/app/group-data';
+            $view = new ViewModel([]);
+        }
         $this->layout('layout/app');
-        return new ViewModel([]);
+        $view->setTemplate($template);
+        return $view;
     }
 
     public function authAction() : ViewModel
@@ -62,6 +88,7 @@ class AppController extends AbstractActionController
         $this->layout('layout/auth');
         return new ViewModel([]);
     }
+
     /**
      * set response
      */

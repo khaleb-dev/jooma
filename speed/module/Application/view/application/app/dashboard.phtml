@@ -6,8 +6,225 @@
 $this->headTitle('Dashboard');
 
 ?>
+<div class="col-12">
+    <div class="card card-custom bg-gray-100 card-stretch gutter-b">
+        <div class="card-header border-0 bg-danger py-5">
+            <h3 class="card-title font-weight-bolder text-white">Blog Stat</h3>
+        </div>
+        <div class="card-body p-0 position-relative overflow-hidden">
+            <div id="kt_mixed_widget_1_chart2222" class="card-rounded-bottom bg-danger" style="height: 200px"></div>
+            <div class="card-spacer mt-n25">
+                <div class="row m-0">
+                    <div class="col-12 col-sm text-center bg-light-primary px-6 py-8 rounded-xl mr-7 mb-7">
+                        <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <polygon points="0 0 24 0 24 24 0 24"/>
+                                    <path d="M3.52270623,14.028695 C2.82576459,13.3275941 2.82576459,12.19529 3.52270623,11.4941891 L11.6127629,3.54050571 C11.9489429,3.20999263 12.401513,3.0247814 12.8729533,3.0247814 L19.3274172,3.0247814 C20.3201611,3.0247814 21.124939,3.82955935 21.124939,4.82230326 L21.124939,11.2583059 C21.124939,11.7406659 20.9310733,12.2027862 20.5869271,12.5407722 L12.5103155,20.4728108 C12.1731575,20.8103442 11.7156477,21 11.2385688,21 C10.7614899,21 10.3039801,20.8103442 9.9668221,20.4728108 L3.52270623,14.028695 Z M16.9307214,9.01652093 C17.9234653,9.01652093 18.7282432,8.21174298 18.7282432,7.21899907 C18.7282432,6.22625516 17.9234653,5.42147721 16.9307214,5.42147721 C15.9379775,5.42147721 15.1331995,6.22625516 15.1331995,7.21899907 C15.1331995,8.21174298 15.9379775,9.01652093 16.9307214,9.01652093 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                </g>
+                            </svg>
+                        </span>
+                        <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">Total Tags</a>
+                        <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-2 d-block">59</span>
+                    </div>
+                    <div class="col-12 col-sm text-center bg-light-danger px-6 py-8 rounded-xl mr-7 mb-7">
+                        <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"/>
+                                    <path d="M4.5,21 L21.5,21 C22.3284271,21 23,20.3284271 23,19.5 L23,8.5 C23,7.67157288 22.3284271,7 21.5,7 L11,7 L8.43933983,4.43933983 C8.15803526,4.15803526 7.77650439,4 7.37867966,4 L4.5,4 C3.67157288,4 3,4.67157288 3,5.5 L3,19.5 C3,20.3284271 3.67157288,21 4.5,21 Z" fill="#000000" opacity="0.3"/>
+                                    <path d="M2.5,19 L19.5,19 C20.3284271,19 21,18.3284271 21,17.5 L21,6.5 C21,5.67157288 20.3284271,5 19.5,5 L9,5 L6.43933983,2.43933983 C6.15803526,2.15803526 5.77650439,2 5.37867966,2 L2.5,2 C1.67157288,2 1,2.67157288 1,3.5 L1,17.5 C1,18.3284271 1.67157288,19 2.5,19 Z" fill="#000000"/>
+                                </g>
+                            </svg>
+                        </span>
+                        <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">Total Groups</a>
+                        <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-2 d-block">6</span>
+                    </div>
+                    <div class="col-12 col-sm text-center bg-light-success px-6 py-8 rounded-xl mr-7 mb-7">
+                        <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <polygon points="0 0 24 0 24 24 0 24"/>
+                                    <path d="M4.85714286,1 L11.7364114,1 C12.0910962,1 12.4343066,1.12568431 12.7051108,1.35473959 L17.4686994,5.3839416 C17.8056532,5.66894833 18,6.08787823 18,6.52920201 L18,19.0833333 C18,20.8738751 17.9795521,21 16.1428571,21 L4.85714286,21 C3.02044787,21 3,20.8738751 3,19.0833333 L3,2.91666667 C3,1.12612489 3.02044787,1 4.85714286,1 Z M8,12 C7.44771525,12 7,12.4477153 7,13 C7,13.5522847 7.44771525,14 8,14 L15,14 C15.5522847,14 16,13.5522847 16,13 C16,12.4477153 15.5522847,12 15,12 L8,12 Z M8,16 C7.44771525,16 7,16.4477153 7,17 C7,17.5522847 7.44771525,18 8,18 L11,18 C11.5522847,18 12,17.5522847 12,17 C12,16.4477153 11.5522847,16 11,16 L8,16 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                    <path d="M6.85714286,3 L14.7364114,3 C15.0910962,3 15.4343066,3.12568431 15.7051108,3.35473959 L20.4686994,7.3839416 C20.8056532,7.66894833 21,8.08787823 21,8.52920201 L21,21.0833333 C21,22.8738751 20.9795521,23 19.1428571,23 L6.85714286,23 C5.02044787,23 5,22.8738751 5,21.0833333 L5,4.91666667 C5,3.12612489 5.02044787,3 6.85714286,3 Z M8,12 C7.44771525,12 7,12.4477153 7,13 C7,13.5522847 7.44771525,14 8,14 L15,14 C15.5522847,14 16,13.5522847 16,13 C16,12.4477153 15.5522847,12 15,12 L8,12 Z M8,16 C7.44771525,16 7,16.4477153 7,17 C7,17.5522847 7.44771525,18 8,18 L11,18 C11.5522847,18 12,17.5522847 12,17 C12,16.4477153 11.5522847,16 11,16 L8,16 Z" fill="#000000" fill-rule="nonzero"/>
+                                </g>
+                            </svg>
+                        </span>
+                        <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">Total Post</a>
+                        <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-2 d-block">101</span>
+                    </div>
+                    <div class="col-12 col-sm text-center bg-light-warning px-6 py-8 rounded-xl mb-7">
+                        <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"/>
+                                    <rect fill="#000000" opacity="0.3" x="12" y="4" width="3" height="13" rx="1.5"/>
+                                    <rect fill="#000000" opacity="0.3" x="7" y="9" width="3" height="8" rx="1.5"/>
+                                    <path d="M5,19 L20,19 C20.5522847,19 21,19.4477153 21,20 C21,20.5522847 20.5522847,21 20,21 L4,21 C3.44771525,21 3,20.5522847 3,20 L3,4 C3,3.44771525 3.44771525,3 4,3 C4.55228475,3 5,3.44771525 5,4 L5,19 Z" fill="#000000" fill-rule="nonzero"/>
+                                    <rect fill="#000000" opacity="0.3" x="17" y="11" width="3" height="6" rx="1.5"/>
+                                </g>
+                            </svg>
+                        </span>
+                        <a href="#" class="text-warning font-weight-bold font-size-h6">Total Visits</a>
+                        <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-2 d-block">55098</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php
     $this->headScript()
-        ->offsetSetFile(41, $this->basePath('assets/js/pages/widgets.js'))
+        ->offsetSetFile(41, $this->basePath('assets/js/pages/widgets.js'));
+        
+    $this->inlineScript()->captureStart();
+?>
+//var KTWidgets = function () {
+    var _initMixedWidget122 = function () {
+        var element = document.getElementById("kt_mixed_widget_1_chart2222");
+        var height = parseInt(KTUtil.css(element, 'height'));
+
+        if (!element) {
+            return;
+        }
+
+        var strokeColor = '#D13647';
+
+        var options = {
+            series: [{
+                name: 'Net Profit',
+                data: [30, 45, 32, 70, 40, 40, 40]
+            }],
+            chart: {
+                type: 'area',
+                height: height,
+                toolbar: {
+                    show: false
+                },
+                zoom: {
+                    enabled: false
+                },
+                sparkline: {
+                    enabled: true
+                },
+                dropShadow: {
+                    enabled: true,
+                    enabledOnSeries: undefined,
+                    top: 5,
+                    left: 0,
+                    blur: 3,
+                    color: strokeColor,
+                    opacity: 0.5
+                }
+            },
+            plotOptions: {},
+            legend: {
+                show: false
+            },
+            dataLabels: {
+                enabled: false
+            },
+            fill: {
+                type: 'solid',
+                opacity: 0
+            },
+            stroke: {
+                curve: 'smooth',
+                show: true,
+                width: 3,
+                colors: [strokeColor]
+            },
+            xaxis: {
+                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                axisBorder: {
+                    show: false,
+                },
+                axisTicks: {
+                    show: false
+                },
+                labels: {
+                    show: false,
+                    style: {
+                        colors: KTApp.getSettings()['colors']['gray']['gray-500'],
+                        fontSize: '12px',
+                        fontFamily: KTApp.getSettings()['font-family']
+                    }
+                },
+                crosshairs: {
+                    show: false,
+                    position: 'front',
+                    stroke: {
+                        color: KTApp.getSettings()['colors']['gray']['gray-300'],
+                        width: 1,
+                        dashArray: 3
+                    }
+                }
+            },
+            yaxis: {
+                min: 0,
+                max: 80,
+                labels: {
+                    show: false,
+                    style: {
+                        colors: KTApp.getSettings()['colors']['gray']['gray-500'],
+                        fontSize: '12px',
+                        fontFamily: KTApp.getSettings()['font-family']
+                    }
+                }
+            },
+            states: {
+                normal: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                hover: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                active: {
+                    allowMultipleDataPointsSelection: false,
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                }
+            },
+            tooltip: {
+                style: {
+                    fontSize: '12px',
+                    fontFamily: KTApp.getSettings()['font-family']
+                },
+                y: {
+                    formatter: function (val) {
+                        return "$" + val + " thousands"
+                    }
+                },
+                marker: {
+                    show: false
+                }
+            },
+            colors: ['transparent'],
+            markers: {
+                colors: [KTApp.getSettings()['colors']['theme']['light']['danger']],
+                strokeColor: [strokeColor],
+                strokeWidth: 3
+            }
+        };
+
+        var chart = new ApexCharts(element, options);
+        chart.render();
+    }();
+//}();
+
+jQuery(document).ready(function () {
+    _initMixedWidget122.init();
+});
+
+<?php
+    $this->inlineScript()->captureEnd();
 ?>

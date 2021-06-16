@@ -22,13 +22,13 @@
 
         <?php
             echo $this->headLink(['rel' => 'shortcut icon', 'href' => $this->basePath() . 'assets/media/logos/favicon.ico'])
-            ->offsetSetStylesheet(80, 'assets/css/themes/layout/aside/dark.css')
-            ->offsetSetStylesheet(70, 'assets/css/themes/layout/brand/dark.css')
-            ->offsetSetStylesheet(60, 'assets/css/themes/layout/header/menu/light.css')
-            ->offsetSetStylesheet(50, 'assets/css/themes/layout/header/base/light.css')
-            ->offsetSetStylesheet(40, 'assets/css/style.bundle.css')
-            ->offsetSetStylesheet(30, 'assets/plugins/custom/prismjs/prismjs.bundle.css')
-            ->offsetSetStylesheet(20, 'assets/plugins/global/plugins.bundle.css');
+            ->offsetSetStylesheet(80, $this->basePath('assets/css/themes/layout/aside/dark.css'), '')
+            ->offsetSetStylesheet(70, $this->basePath('assets/css/themes/layout/brand/dark.css'), '')
+            ->offsetSetStylesheet(60, $this->basePath('assets/css/themes/layout/header/menu/light.css'), '')
+            ->offsetSetStylesheet(50, $this->basePath('assets/css/themes/layout/header/base/light.css'), '')
+            ->offsetSetStylesheet(40, $this->basePath('assets/css/style.bundle.css'), '')
+            ->offsetSetStylesheet(30, $this->basePath('assets/plugins/custom/prismjs/prismjs.bundle.css'), '')
+            ->offsetSetStylesheet(20, $this->basePath('assets/plugins/global/plugins.bundle.css'), '');
         ?>
 
 	</head>
