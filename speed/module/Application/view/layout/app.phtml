@@ -36,8 +36,8 @@
     
 		<!-- Mobile Header -->
 		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
-			<a href="/">
-				<img alt="Logo" src="assets/media/logos/logo-light.png" />
+			<a href="<?= $this->url('app/app-home') ?>">
+				<img alt="Logo" src="<?= $this->basePath('assets/media/logos/logo-light.png') ?>" />
 			</a>
 			<div class="d-flex align-items-center">
 				<!-- Aside Toggle -->
@@ -69,8 +69,8 @@
 				<!-- Aside -->
 				<div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
 					<div class="brand flex-column-auto" id="kt_brand">
-						<a href="" class="brand-logo">
-							<img alt="Logo" src="assets/media/logos/logo-light.png" />
+						<a href="<?= $this->url('app/app-home') ?>" class="brand-logo">
+							<img alt="Logo" src="<?= $this->basePath('assets/media/logos/logo-light.png') ?>" />
 						</a>
 						<!-- Toggle -->
 						<button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
@@ -671,7 +671,7 @@
 			<div class="offcanvas-content pr-5 mr-n5">
 				<div class="d-flex align-items-center mt-5">
 					<div class="symbol symbol-100 mr-5">
-						<div class="symbol-label" style="background-image:url('assets/img/j_300.jpg')"></div>
+						<div class="symbol-label" style="background-image:url('<?= $this->basePath('assets/img/j_300.jpg') ?>')"></div>
 						<i class="symbol-badge bg-success"></i>
 					</div>
 					<div class="d-flex flex-column">
