@@ -78,15 +78,18 @@ class AppController extends AbstractActionController
             
             $template = 'application/app/groups';
             $view = new ViewModel([
-                                    'groups' => $groups
+                                    'groups' => $groups,
+                                    'entityPost' => $this->entityManager->getRepository(Post::class)
                                 ]);
         }
         else { // load group by id
             $group = $this->entityManager->getRepository(PostGroup::class)->find($groupId);
+            $postCount = count($this->entityManager->getRepository(Post::class)->findBy(['group' => $group, 'isDeleted' => false, 'isPublished' => true]));
 
             $template = 'application/app/group-data';
             $view = new ViewModel([
-                                    'group' => $group
+                                    'group' => $group,
+                                    'postCount' => $postCount
                                 ]);
         }
         $this->layout('layout/app');
