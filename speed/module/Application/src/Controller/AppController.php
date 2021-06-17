@@ -74,14 +74,20 @@ class AppController extends AbstractActionController
         $groupId = $this->params()->fromRoute('id', null);
         // load all groups
         if(empty($groupId)){
+            $groups = $this->entityManager->getRepository(PostGroup::class)->findAll();
             
             $template = 'application/app/groups';
-            $view = new ViewModel([]);
+            $view = new ViewModel([
+                                    'groups' => $groups
+                                ]);
         }
         else { // load group by id
+            $group = $this->entityManager->getRepository(PostGroup::class)->find($groupId);
 
             $template = 'application/app/group-data';
-            $view = new ViewModel([]);
+            $view = new ViewModel([
+                                    'group' => $group
+                                ]);
         }
         $this->layout('layout/app');
         $view->setTemplate($template);

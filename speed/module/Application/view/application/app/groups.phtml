@@ -8,14 +8,33 @@ $this->headTitle('Groups');
 // $this->headLink()
 //     ->offsetSetStylesheet(10, $this->basePath('assets/css/pages/login/classic/login-5.css'));
 ?>
+
 <div class="row">
+    <?php
+        if (empty($groups)) :
+    ?>
+    <div class="col-12">
+        <div class="card card-custom card-stretch gutter-b">
+            <div class="card-body d-flex flex-column p-0">
+                <div class="d-flex align-items-center justify-content-between card-spacer">
+                    <div class="d-flex flex-column mr-2">
+                        <i><span class="text-muted font-weight-bold mt-2">No group(s)</span></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+        else :
+            foreach ($groups as $group) :
+    ?>
     <div class="col-xl-4">
         <div class="card card-custom card-stretch gutter-b">
             <div class="card-body d-flex flex-column p-0">
                 <div class="d-flex align-items-center justify-content-between card-spacer">
                     <div class="d-flex flex-column mr-2">
-                        <a href="#" class="text-dark-75 text-hover-warning font-weight-bolder font-size-h5">Group name</a>
-                        <span class="text-muted font-weight-bold mt-2">Description</span>
+                        <a href="<?= $this->url('app/manage-groups', ['id' => $group->getId()]) ?>" class="text-dark-75 text-hover-warning font-weight-bolder font-size-h5"><?= $group->getName() ?></a>
+                        <span class="text-muted font-weight-bold mt-2"><?= $group->getDescription() ?></span>
                     </div>
                     <span class="symbol symbol-light-success symbol-45">
                         <span class="symbol-label font-weight-bolder font-size-h6">18</span>
@@ -24,6 +43,10 @@ $this->headTitle('Groups');
             </div>
         </div>
     </div>
+    <?php
+            endforeach;
+        endif;
+    ?>
 </div>
 
 <?php
