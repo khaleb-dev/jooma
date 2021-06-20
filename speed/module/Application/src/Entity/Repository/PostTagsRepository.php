@@ -2,6 +2,10 @@
 
 namespace Application\Entity\Repository;
 
+use Application\Entity\Post;
+use Application\Entity\PostTags;
+use Application\Entity\Tags;
+
 /**
  * PostTagsRepository
  *
@@ -10,4 +14,29 @@ namespace Application\Entity\Repository;
  */
 class PostTagsRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function countPostByTag(Tags $tag)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        return $this->createQueryBuilder('tp')
+            ->select('COUNT(tp.id) as totalPost')
+            ->setParameter('tag', $tag->getId())
+            ->join(Post::class, 'p', 'WITH', 'tp.post = p.id')
+            ->where('tp.tag = :tag AND p.isDeleted = 0 AND p.isPublished = 1')
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+
+    // public function fetchCountPostByTag()
+    // {
+    //     $conn = $this->getEntityManager()->getConnection();
+
+    //     return $this->createQueryBuilder('tp')
+    //         ->andWhere('tp.tag = :tag', 'tp.paymentStatus = :paymentStatus', 'tp.memberTypeId = :memberTypeId')
+    //         ->setParameter('tag', $tag)
+    //         ->select('COUNT(tp.id) as totalPost')
+    //         ->getQuery()
+    //         ->getOneOrNullResult();
+    // }
 }

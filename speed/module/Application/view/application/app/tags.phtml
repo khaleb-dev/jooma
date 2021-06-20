@@ -26,6 +26,7 @@ $this->headTitle('Tags');
     <?php
         else :
             foreach ($tags as $tag) :
+                $postCount = $postCounter->countPostByTag($tag);
     ?>
     <div class="col-xl-4">
         <div class="card card-custom card-stretch gutter-b">
@@ -36,7 +37,7 @@ $this->headTitle('Tags');
                         <span class="text-muted font-weight-bold mt-2"><?= $tag->getDescription() ?></span>
                     </div>
                     <span class="symbol symbol-light-warning symbol-45">
-                        <span class="symbol-label font-weight-bolder font-size-h6">18</span>
+                        <span class="symbol-label font-weight-bolder font-size-h6"><?= $postCount['totalPost'] ?></span>
                     </span>
                 </div>
             </div>

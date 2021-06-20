@@ -54,14 +54,18 @@ class AppController extends AbstractActionController
             
             $template = 'application/app/tags';
             $view = new ViewModel([
-                                    'tags' => $tags
+                                    'tags' => $tags,
+                                    'postCounter' => $this->entityManager->getRepository(PostTags::class)
                                 ]);
         }
         else { // load tag by id
-            $tag = $this->entityManager->getRepository(Tags::class)->find($tagId);
+            $tag = $this->entityManager->getRepository(Tags::class)->find(intval($tagId));
+            $tagCount = $this->entityManager->getRepository(PostTags::class)->countPostByTag($tag);
+
             $template = 'application/app/tag-data';
             $view = new ViewModel([
-                                    'tag' => $tag
+                                    'tag' => $tag,
+                                    'postCount' => $tagCount['totalPost']
                                 ]);
         }
         $this->layout('layout/app');
@@ -72,8 +76,8 @@ class AppController extends AbstractActionController
     public function manageGroupsAction() : ViewModel
     {
         $groupId = $this->params()->fromRoute('id', null);
-        // load all groups
-        if(empty($groupId)){
+        
+        if(empty($groupId)){ // load all groups
             $groups = $this->entityManager->getRepository(PostGroup::class)->findAll();
             
             $template = 'application/app/groups';
