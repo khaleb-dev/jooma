@@ -39,6 +39,12 @@ class AppController extends AbstractActionController
         return new ViewModel([]);
     }
 
+    public function createPostAction() : ViewModel
+    {
+        $this->layout('layout/app');
+        return new ViewModel([]);
+    }
+
     public function managePostsAction() : ViewModel
     {
         $this->layout('layout/app');

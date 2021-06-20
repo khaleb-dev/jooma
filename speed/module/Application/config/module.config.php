@@ -13,6 +13,7 @@ use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Laminas\Router\Http\Hostname;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 $domainParts = explode(".",$_SERVER['SERVER_NAME']);
 if($domainParts[0] == 'api' || $domainParts[0] == 'admin'){
@@ -123,6 +124,16 @@ return [
                             ],
                         ],
                     ],
+                    'create-post' => [
+                        'type' => Literal::class,
+                        'options' => [
+                            'route'    => '/create/post',
+                            'defaults' => [
+                                'controller'    => Controller\AppController::class,
+                                'action'        => 'create-post',
+                            ],
+                        ],
+                    ],
                     'manage-posts' => [
                         'type' => Segment::class,
                         'options' => [
@@ -213,6 +224,14 @@ return [
         'aliases' => [
             'auth' => Auth\AuthPlugin::class,
         ],
+    ],
+    'view_helpers' => [
+        'factories' => [
+            View\Helper\BackOfficeMenu::class => InvokableFactory::class,                  
+        ],
+       'aliases' => [
+            'backOfficeMenu' => View\Helper\BackOfficeMenu::class,
+       ]
     ],
     // The following registers our custom view 
     // helper classes in view plugin manager.
