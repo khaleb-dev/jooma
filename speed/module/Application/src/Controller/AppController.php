@@ -66,12 +66,19 @@ class AppController extends AbstractActionController
         }
         else { // load tag by id
             $tag = $this->entityManager->getRepository(Tags::class)->find(intval($tagId));
-            $tagCount = $this->entityManager->getRepository(PostTags::class)->countPostByTag($tag);
+            $tagCount['totalPost'] = 0;
+            $posts = [];
+            if (!empty($tag)) {
+                $tagCount = $this->entityManager->getRepository(PostTags::class)->countPostByTag($tag);
+                $posts = $this->entityManager->getRepository(PostTags::class)->findBy(['tag' => $tag]);
+            }
 
             $template = 'application/app/tag-data';
             $view = new ViewModel([
                                     'tag' => $tag,
-                                    'postCount' => $tagCount['totalPost']
+                                    'postCount' => $tagCount['totalPost'],
+                                    'posts' => $posts,
+                                    'utility' => $this->utility
                                 ]);
         }
         $this->layout('layout/app');
@@ -95,11 +102,17 @@ class AppController extends AbstractActionController
         else { // load group by id
             $group = $this->entityManager->getRepository(PostGroup::class)->find($groupId);
             $postCount = count($this->entityManager->getRepository(Post::class)->findBy(['group' => $group, 'isDeleted' => false, 'isPublished' => true]));
+            $posts = [];
+            if (!empty($group)) {
+                $posts = $this->entityManager->getRepository(Post::class)->findBy(['group' => $group, 'isDeleted' => false]);
+            }
 
             $template = 'application/app/group-data';
             $view = new ViewModel([
                                     'group' => $group,
-                                    'postCount' => $postCount
+                                    'postCount' => $postCount,
+                                    'posts' => $posts,
+                                    'utility' => $this->utility
                                 ]);
         }
         $this->layout('layout/app');
