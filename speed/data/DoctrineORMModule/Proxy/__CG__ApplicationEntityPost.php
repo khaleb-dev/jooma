@@ -66,10 +66,10 @@ class Post extends \Application\Entity\Post implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'isDeleted', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'isPublished', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'slug', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'postTitle', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'postBody', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'thumbnailUrl', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'totalViews', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'publishedOn', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'updatedOn', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'user', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'group'];
+            return ['__isInitialized__', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'isDeleted', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'isPublished', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'slug', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'postTitle', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'postBody', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'thumbnailUrl', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'totalViews', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'lastViewedOn', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'publishedOn', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'updatedOn', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'user', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'group'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'isDeleted', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'isPublished', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'slug', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'postTitle', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'postBody', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'thumbnailUrl', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'totalViews', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'publishedOn', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'updatedOn', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'user', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'group'];
+        return ['__isInitialized__', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'isDeleted', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'isPublished', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'slug', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'postTitle', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'postBody', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'thumbnailUrl', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'totalViews', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'lastViewedOn', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'publishedOn', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'updatedOn', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'user', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'group'];
     }
 
     /**
@@ -343,6 +343,28 @@ class Post extends \Application\Entity\Post implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTotalViews', []);
 
         return parent::getTotalViews();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setLastViewedOn($lastViewedOn)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastViewedOn', [$lastViewedOn]);
+
+        return parent::setLastViewedOn($lastViewedOn);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLastViewedOn()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastViewedOn', []);
+
+        return parent::getLastViewedOn();
     }
 
     /**
