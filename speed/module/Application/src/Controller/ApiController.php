@@ -33,10 +33,10 @@ class ApiController extends AbstractActionController
         $this->utility = $utility;
     }
 
-    // public function indexAction() : JsonModel
-    // {
-    //     return new JsonModel([]);
-    // }
+    public function indexAction() : JsonModel
+    {
+        return new JsonModel([]);
+    }
     
     /**
      * set response
