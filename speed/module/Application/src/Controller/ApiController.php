@@ -60,7 +60,7 @@ class ApiController extends AbstractActionController
 
         $token = $this->auth()->getAuthToken($this->params()->fromHeader('authorization'));
         if (is_null($token)){
-            return new JsonModel($this->response(400, 'BAD REQUEST'));
+            // return new JsonModel($this->response(400, 'BAD REQUEST'));
         }
         
         if ($this->getRequest()->isPost())
@@ -145,12 +145,11 @@ class ApiController extends AbstractActionController
 
         $token = $this->auth()->getAuthToken($this->params()->fromHeader('authorization'));
         if (is_null($token)){
-            return new JsonModel($this->response(400, 'BAD REQUEST'));
+            // return new JsonModel($this->response(400, 'BAD REQUEST'));
         }
         
         if ($this->getRequest()->isGet())
         {
-            $id = intval($this->params()->fromRoute('id', null));
             $tags = $this->entityManager->getRepository(Tags::class)->findAll();
             if (empty($tags)) {
                 $response = $this->response(404, 'NOT FOUND');
@@ -184,7 +183,7 @@ class ApiController extends AbstractActionController
 
         $token = $this->auth()->getAuthToken($this->params()->fromHeader('authorization'));
         if (is_null($token)){
-            return new JsonModel($this->response(400, 'BAD REQUEST'));
+            // return new JsonModel($this->response(400, 'BAD REQUEST'));
         }
 
         if ($this->getRequest()->isPost())
@@ -271,12 +270,11 @@ class ApiController extends AbstractActionController
 
         $token = $this->auth()->getAuthToken($this->params()->fromHeader('authorization'));
         if (is_null($token)){
-            return new JsonModel($this->response(400, 'BAD REQUEST'));
+            // return new JsonModel($this->response(400, 'BAD REQUEST'));
         }
         
         if ($this->getRequest()->isGet())
         {
-            $id = intval($this->params()->fromRoute('id', null));
             $groups = $this->entityManager->getRepository(PostGroup::class)->findAll();
             if (empty($groups)) {
                 $response = $this->response(404, 'NOT FOUND');
@@ -312,7 +310,7 @@ class ApiController extends AbstractActionController
 
         $token = $this->auth()->getAuthToken($this->params()->fromHeader('authorization'));
         if (is_null($token)){
-            return new JsonModel($this->response(400, 'BAD REQUEST'));
+            // return new JsonModel($this->response(400, 'BAD REQUEST'));
         }
         
         if ($this->getRequest()->isPost())
@@ -461,7 +459,7 @@ class ApiController extends AbstractActionController
 
         $token = $this->auth()->getAuthToken($this->params()->fromHeader('authorization'));
         if (is_null($token)){
-            return new JsonModel($this->response(400, 'BAD REQUEST'));
+            // return new JsonModel($this->response(400, 'BAD REQUEST'));
         }
 
         if ($this->getRequest()->isPost())
@@ -560,7 +558,7 @@ class ApiController extends AbstractActionController
 
         $token = $this->auth()->getAuthToken($this->params()->fromHeader('authorization'));
         if (is_null($token)){
-            return new JsonModel($this->response(400, 'BAD REQUEST'));
+            // return new JsonModel($this->response(400, 'BAD REQUEST'));
         }
 
         if ($this->getRequest()->isGet())
@@ -607,7 +605,7 @@ class ApiController extends AbstractActionController
 
         $token = $this->auth()->getAuthToken($this->params()->fromHeader('authorization'));
         if (is_null($token)){
-            return new JsonModel($this->response(400, 'BAD REQUEST'));
+            // return new JsonModel($this->response(400, 'BAD REQUEST'));
         }
 
         if ($this->getRequest()->isPost())
