@@ -18,7 +18,10 @@ class Utility
 
 		const APPLICATION_NAME			=	'Publogger';
 
-		const APPLICATION_DOMAIN		=	'https://publogger.khaleb.dev/';
+		const API_DOMAIN				=	'http://api.sikha'; // local
+
+		// const API_DOMAIN				=	'http://api.joomedia.com/'; // live
+
 		
 	#}
 

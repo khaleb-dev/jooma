@@ -36,19 +36,25 @@ class AppController extends AbstractActionController
     public function dashboardAction() : ViewModel
     {
         $this->layout('layout/app');
-        return new ViewModel([]);
+        return new ViewModel([
+                                'utility' => $this->utility
+                            ]);
     }
 
     public function createPostAction() : ViewModel
     {
         $this->layout('layout/app');
-        return new ViewModel([]);
+        return new ViewModel([
+                                'utility' => $this->utility
+                            ]);
     }
 
     public function managePostsAction() : ViewModel
     {
         $this->layout('layout/app');
-        return new ViewModel([]);
+        return new ViewModel([
+                                'utility' => $this->utility
+                            ]);
     }
 
     public function manageTagsAction() : ViewModel
@@ -61,7 +67,8 @@ class AppController extends AbstractActionController
             $template = 'application/app/tags';
             $view = new ViewModel([
                                     'tags' => $tags,
-                                    'postCounter' => $this->entityManager->getRepository(PostTags::class)
+                                    'postCounter' => $this->entityManager->getRepository(PostTags::class),
+                                    'utility' => $this->utility
                                 ]);
         }
         else { // load tag by id
@@ -96,7 +103,8 @@ class AppController extends AbstractActionController
             $template = 'application/app/groups';
             $view = new ViewModel([
                                     'groups' => $groups,
-                                    'entityPost' => $this->entityManager->getRepository(Post::class)
+                                    'entityPost' => $this->entityManager->getRepository(Post::class),
+                                    'utility' => $this->utility
                                 ]);
         }
         else { // load group by id
@@ -123,7 +131,9 @@ class AppController extends AbstractActionController
     public function authAction() : ViewModel
     {
         $this->layout('layout/auth');
-        return new ViewModel([]);
+        return new ViewModel([
+                                'utility' => $this->utility
+                            ]);
     }
 
 }
