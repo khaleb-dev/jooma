@@ -154,7 +154,7 @@ $this->backOfficeMenu()->setActiveItemId('groups');
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary font-weight-bold">Save changes</button>
+          <button type="button" class="btn btn-primary font-weight-bold" id="btnUpdateGroup">Save changes</button>
         </div>
       </form>
     </div>
@@ -164,7 +164,34 @@ $this->backOfficeMenu()->setActiveItemId('groups');
 <?php
     $this->inlineScript()->captureStart();
 ?>
+  $(document).ready(function(){
+    $(document).on('click', '#btnUpdateGroup', function(){
+      $.ajax({
+        url: "<?=$utility::API_DOMAIN?>/v1/group/<?=$group->getId()?>",
+        type: "POST",
+        //dataType: 'json',
+        //headers: {
+        //  "Authorization": "Bearer 'Token'"
+        //},
+        data: {
+          name: $('#txtGroupName').val(),
+          description: $('#txtGroupDexcription').val(),
+          update: 'true',
+          default: 'false'
+        },
+        success: function(data){
+          var response=$.parseJSON(data);
+          if (response.code == 200) {
 
+          }
+          else {
+
+          }
+        }
+      });
+
+    });
+  });
 <?php
     $this->inlineScript()->captureEnd();
 ?>
