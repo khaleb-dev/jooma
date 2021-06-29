@@ -38,6 +38,13 @@ $this->backOfficeMenu()->setActiveItemId('tags');
             <th class="p-0 min-w-150px"></th>
           </tr>
           <tbody>
+            <?php
+              if (!empty($posts)) :
+                foreach ($posts as $postTag) :
+                  if ($postTag->getPost()->getIsDeleted() == true || $postTag->getPost()->getIsPublished() == false) {
+                    continue;
+                  }
+            ?>
             <tr>
               <td class="p-0 py-4">
                 <div class="symbol symbol-60 symbol-2by3 flex-shrink-0 mr-4">
@@ -52,7 +59,7 @@ $this->backOfficeMenu()->setActiveItemId('tags');
                 <span class="text-dark-75 font-weight-bolder d-block font-size-lg">Group</span>
               </td>
               <td class="text-right">
-                <span class="label label-lg label-light-danger label-inline">status</span>
+                <span class="label label-lg label-light-danger label-inline"><?= $postTag->getPost()->getIsPublished() ? "Published" : "Draft" ?></span>
               </td>
               <td class="text-center">
                 <span class="label label-lg label-light-primary label-inline font-weight-bolder font-size-lg">56</span>
@@ -107,6 +114,16 @@ $this->backOfficeMenu()->setActiveItemId('tags');
                 </a>
               </td>
             </tr>
+            <?php
+                endforeach;
+              else :
+            ?>
+            <tr>
+              <td class="text-center"> No post </td>
+            </tr>
+            <?php
+              endif;
+            ?>
           </tbody>
         </table>
       </div>
