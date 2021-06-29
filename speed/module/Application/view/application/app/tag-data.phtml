@@ -14,9 +14,9 @@ $this->backOfficeMenu()->setActiveItemId('tags');
         <div class="d-flex align-items-center justify-content-between card-spacer">
           <div class="d-flex flex-column">
             <span>
-              <a href="#" class="text-dark-75 text-hover-warning font-weight-bolder font-size-h5"><?= $tag->getName() ?></a><i class="ml-4 flaticon-edit bg-hover-light" data-toggle="modal" data-target="#tagUpdateModal"></i>
+              <a href="#" class="text-dark-75 text-hover-warning font-weight-bolder font-size-h5" id="tagName"><?= $tag->getName() ?></a><i class="ml-4 flaticon-edit bg-hover-light" data-toggle="modal" data-target="#tagUpdateModal"></i>
             </span>
-            <span class="text-muted font-weight-bold mt-2"><?= $tag->getDescription() ?></span>
+            <span class="text-muted font-weight-bold mt-2" id="tagDesc"><?= $tag->getDescription() ?></span>
           </div>
           <span class="symbol symbol-light-warning symbol-45">
             <span class="symbol-label font-weight-bolder font-size-h6"><?= $postCount ?></span>
@@ -152,6 +152,10 @@ $this->backOfficeMenu()->setActiveItemId('tags');
 ?>
   $(document).ready(function(){
     $(document).on('click', '#btnUpdateTag', function(){
+      $(this).text('Saving ');
+      $(this).addClass("spinner spinner-right spinner-white");
+      $(this).attr('disabled', 'disabled');
+      let btn = $(this);
       $.ajax({
         url: "<?=$utility::API_DOMAIN?>/v1/tag/<?=$tag->getId()?>",
         type: "POST",
@@ -164,14 +168,20 @@ $this->backOfficeMenu()->setActiveItemId('tags');
           description: $('#txtTagDexcription').val(),
           update: 'true'
         },
-        success: function(data){
-          var response=$.parseJSON(data);
+        success: function(response){
+          btn.removeClass("spinner spinner-right spinner-white");
           if (response.code == 200) {
-
+            btn.html('Saved <i class="flaticon2-check-mark"></i>');
+            $("#tagName").text(response.tag.name);
+            $("#tagDesc").text(response.tag.description);
           }
           else {
 
           }
+          setTimeout(function() {
+            btn.removeAttr('disabled');
+            btn.html('Save changes');
+          }, 1000);
         }
       });
 
