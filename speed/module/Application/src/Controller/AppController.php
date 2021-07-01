@@ -120,6 +120,7 @@ class AppController extends AbstractActionController
                                     'group' => $group,
                                     'postCount' => $postCount,
                                     'posts' => $posts,
+                                    'postTag' => $this->entityManager->getRepository(PostTags::class), 
                                     'utility' => $this->utility
                                 ]);
         }

@@ -43,6 +43,13 @@ $this->backOfficeMenu()->setActiveItemId('groups');
             <?php
               if (!empty($posts)) :
                 foreach($posts as $post) :
+                  $tags = $postTag->findBy(['post' => $post]);
+                  $pt = "";
+                  if (!empty($tags)) {
+                    foreach ($tags as $tag) {
+                      $pt .= $tag->getTag()->getName().", ";
+                    }
+                  }
             ?>
             <tr>
               <td class="p-0 py-4">
@@ -55,7 +62,7 @@ $this->backOfficeMenu()->setActiveItemId('groups');
                 <span class="text-muted font-weight-bold d-block"><?= $utility->wordCount(preg_replace("/<img[^>]+\>/i", "", html_entity_decode($post->getPostBody())),10) ?></span>
               </td>
               <td class="text-right">
-                <span class="text-muted font-weight-bold">tag, tag, tag</span>
+                <span class="text-muted font-weight-bold"><?= $pt ?></span>
               </td>
               <td class="text-right">
                 <span class="label label-lg label-light-warning label-inline"><?= $post->getIsPublished() ? "Published" : "Draft" ?></span>

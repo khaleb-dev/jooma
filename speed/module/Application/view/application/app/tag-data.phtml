@@ -41,7 +41,8 @@ $this->backOfficeMenu()->setActiveItemId('tags');
             <?php
               if (!empty($posts)) :
                 foreach ($posts as $postTag) :
-                  if ($postTag->getPost()->getIsDeleted() == true || $postTag->getPost()->getIsPublished() == false) {
+                  $post = $postTag->getPost();
+                  if ($post->getIsDeleted() == true || $post->getIsPublished() == false) {
                     continue;
                   }
             ?>
@@ -52,17 +53,17 @@ $this->backOfficeMenu()->setActiveItemId('tags');
                 </div>
               </td>
               <td class="pl-0">
-                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Post Title</a>
-                <span class="text-muted font-weight-bold d-block">post extract</span>
+                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg"><?= $post->getPostTitle() ?></a>
+                <span class="text-muted font-weight-bold d-block"><?= $utility->wordCount(preg_replace("/<img[^>]+\>/i", "", html_entity_decode($post->getPostBody())),10) ?></span>
               </td>
               <td class="text-right pr-0">
-                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">Group</span>
+                <span class="text-dark-75 font-weight-bolder d-block font-size-lg"><?= $post->getGroup()->getName() ?></span>
               </td>
               <td class="text-right">
-                <span class="label label-lg label-light-danger label-inline"><?= $postTag->getPost()->getIsPublished() ? "Published" : "Draft" ?></span>
+                <span class="label label-lg label-light-danger label-inline"><?= $post->getIsPublished() ? "Published" : "Draft" ?></span>
               </td>
               <td class="text-center">
-                <span class="label label-lg label-light-primary label-inline font-weight-bolder font-size-lg">56</span>
+                <span class="label label-lg label-light-primary label-inline font-weight-bolder font-size-lg"><?= $post->getTotalViews() ?></span>
               </td>
               <td class="pr-0 text-right">
                 <a href="#" class="btn btn-icon btn-light btn-hover-primary btn-sm">
