@@ -51,10 +51,25 @@ class AppController extends AbstractActionController
 
     public function managePostsAction() : ViewModel
     {
+        $postId = $this->params()->fromRoute('id', null);
+        // load all posts
+        if(empty($postId)){
+            $posts = $this->entityManager->getRepository(Post::class)->findAll();
+
+            $template = 'application/app/manage-posts';
+            $view = new ViewModel([
+                                    'posts' => $posts,
+                                    'postTag' => $this->entityManager->getRepository(PostTags::class),
+                                    'utility' => $this->utility
+                                ]);
+        }
+        else {
+
+        }
+
         $this->layout('layout/app');
-        return new ViewModel([
-                                'utility' => $this->utility
-                            ]);
+        $view->setTemplate($template);
+        return $view;
     }
 
     public function manageTagsAction() : ViewModel

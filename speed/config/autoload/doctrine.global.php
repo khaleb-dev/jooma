@@ -34,7 +34,7 @@ return [
                     'WEEK' => 'DoctrineExtensions\Query\Mysql\Week',
                 ],
                 // Generate proxies automatically (turn off for production)
-                'generate_proxies'  => true,
+                'generate_proxies'  => false,
             ]
         ]
     ],
