@@ -43,8 +43,13 @@ class AppController extends AbstractActionController
 
     public function createPostAction() : ViewModel
     {
+        $groups = $this->entityManager->getRepository(PostGroup::class)->findAll();
+        $tags = $this->entityManager->getRepository(Tags::class)->findAll();
+
         $this->layout('layout/app');
         return new ViewModel([
+                                'groups' => $groups,
+                                'tags' => $tags,
                                 'utility' => $this->utility
                             ]);
     }
