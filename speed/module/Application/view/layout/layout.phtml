@@ -18,13 +18,24 @@
 	        ->appendName('author', 'Khaleb Great')
         ?>
 
+        <?php
+            echo $this->headLink(['rel' => 'shortcut icon', 'href' => $this->basePath() . 'assets/media/logos/favicon.ico'])
+            ->offsetSetStylesheet(20, $this->basePath('blog_assets/css/blog.fonts.css'), '')
+            ->offsetSetStylesheet(10, $this->basePath('blog_assets/css/blog.style.bundle.css'), '');
+        ?>
 	</head>
     <body>
 
-        <center>Layout.phtml</center>
-
 		<?= $this->content ?>
 
+		<?= $this->headScript()
+			->offsetSetFile(20, $this->basePath('blog_assets/js/jquery-ui-1.12.1.js'))
+			->offsetSetFile(20, $this->basePath('blog_assets/js/jquery-ui-1.12.1.js'))
+			->offsetSetFile(20, $this->basePath('blog_assets/js/popper-2.9.2.min.js'))
+			->offsetSetFile(30, $this->basePath('blog_assets/js/jquery-ui-1.12.1.js'))
+			->offsetSetFile(20, $this->basePath('blog_assets/js/jquery-migrate-3.0.1.min.js'))
+			->offsetSetFile(10, $this->basePath('blog_assets/js/jquery-3.3.1.min.js'));
+		?>
         <?= $this->inlineScript() ?>
     </body>
 </html>
