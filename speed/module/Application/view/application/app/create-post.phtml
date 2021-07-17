@@ -92,7 +92,25 @@ $this->backOfficeMenu()->setActiveItemId('editor');
         ],
         toolbar: "formatselect | fontsizeselect | undo redo | cut copy paste | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright alignjustify outdent indent | blockquote subscript superscript | emoticons image imagetool media | preview",
         branding: false,
-    }); 
+    });
+
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
 
     $(document).ready(function() {
         loadTags();
@@ -122,14 +140,15 @@ $this->backOfficeMenu()->setActiveItemId('editor');
                 },
                 success: function(response){
                   btn.removeClass("spinner spinner-right spinner-primary");
-                  if (response.code == 200) {
+                  if (response.code == 201 || response.code == 200) {
                     btn.html('Saved <i class="flaticon2-check-mark text-primary"></i>');
-                    $("#txtSlug").text(response.postData.slug);
-                    $("#txtTitle").text(response.postData.title);
-                    $("#pid").text(response.postData.id);
+                    $("#txtSlug").val(response.postData.slug);
+                    $("#txtTitle").val(response.postData.title);
+                    $("#pid").val(response.postData.id);
+                    toastr.success("Nice, work SAVED!");
                   }
                   else {
-
+                    toastr.danger(response.status);
                   }
                   setTimeout(function() {
                     btn.removeAttr('disabled');
@@ -145,9 +164,43 @@ $this->backOfficeMenu()->setActiveItemId('editor');
             $(this).addClass("spinner spinner-right spinner-white");
             $(this).attr('disabled', 'disabled');
             $('#saveDraft').attr('disabled', 'disabled');
+            let btn = $(this);
+            let url = '<?=$utility::API_DOMAIN?>/v1/post/'+$('#pid').val();
+            var tiny = tinyMCE.get('txtPostBody');
+            $.ajax({
+                url: url,
+                type: "POST",
+                //dataType: 'json',
+                //headers: {
+                //  "Authorization": "Bearer 'Token'"
+                //},
+                data: {
+                  group: $('#slGroup').val(),
+                  title: $('#txtTitle').val(),
+                  slug: $('#txtSlug').val(),
+                  tags: $('#txtTags').val(),
+                  content: tiny.getContent(),
+                  publish: 'true'
+                },
+                success: function(response){
+                  btn.removeClass("spinner spinner-right spinner-white");
+                  if (response.code == 201 || response.code == 200) {
+                    btn.html('Published <i class="flaticon2-check-mark text-white"></i>');
+                    $("#txtSlug").val(response.postData.slug);
+                    $("#txtTitle").val(response.postData.title);
+                    $("#pid").val(response.postData.id);
+                    toastr.success("Great! Post PUBLISHED.");
 
+                    setTimeout(function() {
+                      window.location('/manage/posts');
+                    }, 1000);
+                  }
+                  else {
+                    toastr.danger(response.status);
+                  }
+                }
+            });
         });
-
     });
 <?php
     $this->inlineScript()->captureEnd();
