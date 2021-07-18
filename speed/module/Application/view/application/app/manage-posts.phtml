@@ -44,7 +44,7 @@ $this->backOfficeMenu()->setActiveItemId('posts');
               </td>
               <td class="pl-0">
                 <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg"><?= $post->getPostTitle() ?></a>
-                <span class="text-muted font-weight-bold d-block"><?= $utility->wordCount(preg_replace("/<img[^>]+\>/i", "", html_entity_decode($post->getPostBody())),10) ?></span>
+                <span class="text-muted font-weight-bold d-block"><?= $utility->wordCount(preg_replace("/<img[^>]+\>/i", "", html_entity_decode($post->getPostBody())),10) ?>...</span>
               </td>
               <td class="text-right">
                 <span class="text-muted font-weight-bold"><?= $pt ?></span>

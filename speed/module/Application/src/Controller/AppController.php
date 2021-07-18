@@ -59,7 +59,7 @@ class AppController extends AbstractActionController
         $postId = $this->params()->fromRoute('id', null);
         // load all posts
         if(empty($postId)){
-            $posts = $this->entityManager->getRepository(Post::class)->findAll();
+            $posts = $this->entityManager->getRepository(Post::class)->findBy([], ['id'=>'DESC'], 50,0);
 
             $template = 'application/app/manage-posts';
             $view = new ViewModel([
@@ -96,8 +96,8 @@ class AppController extends AbstractActionController
             $tagCount['totalPost'] = 0;
             $posts = [];
             if (!empty($tag)) {
-                $tagCount = $this->entityManager->getRepository(PostTags::class)->countPostByTag($tag);
-                $posts = $this->entityManager->getRepository(PostTags::class)->findBy(['tag' => $tag]);
+                $tagCount = $this->entityManager->getRepository(PostTags::class)->countPostByTag($tag, false);
+                $posts = $this->entityManager->getRepository(PostTags::class)->findBy(['tag' => $tag], ['id'=>'DESC'], 50,0);
             }
 
             $template = 'application/app/tag-data';
@@ -129,10 +129,10 @@ class AppController extends AbstractActionController
         }
         else { // load group by id
             $group = $this->entityManager->getRepository(PostGroup::class)->find($groupId);
-            $postCount = count($this->entityManager->getRepository(Post::class)->findBy(['group' => $group, 'isDeleted' => false, 'isPublished' => true]));
+            $postCount = count($this->entityManager->getRepository(Post::class)->findBy(['group' => $group, 'isDeleted' => false]));
             $posts = [];
             if (!empty($group)) {
-                $posts = $this->entityManager->getRepository(Post::class)->findBy(['group' => $group, 'isDeleted' => false]);
+                $posts = $this->entityManager->getRepository(Post::class)->findBy(['group' => $group, 'isDeleted' => false], ['id'=>'DESC'], 50,0);
             }
 
             $template = 'application/app/group-data';

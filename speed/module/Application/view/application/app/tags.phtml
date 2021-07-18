@@ -27,7 +27,7 @@ $this->backOfficeMenu()->setActiveItemId('tags');
     <?php
         else :
             foreach ($tags as $tag) :
-                $postCount = $postCounter->countPostByTag($tag);
+                $postCount = $postCounter->countPostByTag($tag, false);
     ?>
     <div class="col-xl-4">
         <div class="card card-custom card-stretch gutter-b">

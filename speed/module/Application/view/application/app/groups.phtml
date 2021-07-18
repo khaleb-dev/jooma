@@ -26,7 +26,7 @@ $this->backOfficeMenu()->setActiveItemId('groups');
     <?php
         else :
             foreach ($groups as $group) :
-                $postCount = count($entityPost->findBy(['group' => $group, 'isDeleted' => false, 'isPublished' => true]));
+                $postCount = count($entityPost->findBy(['group' => $group, 'isDeleted' => false]));
     ?>
     <div class="col-xl-4">
         <div class="card card-custom card-stretch gutter-b">

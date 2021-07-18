@@ -192,7 +192,7 @@ $this->backOfficeMenu()->setActiveItemId('editor');
                     toastr.success("Great! Post PUBLISHED.");
 
                     setTimeout(function() {
-                      window.location('/manage/posts');
+                      window.location.assign('<?= $this->url('app/manage-posts')?>');
                     }, 1000);
                   }
                   else {

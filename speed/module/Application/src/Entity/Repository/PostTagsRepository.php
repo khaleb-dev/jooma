@@ -14,7 +14,7 @@ use Application\Entity\Tags;
  */
 class PostTagsRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function countPostByTag(Tags $tag)
+    public function countPostByTag(Tags $tag, $countOnlyPublished=false)
     {
         $conn = $this->getEntityManager()->getConnection();
 
@@ -22,7 +22,7 @@ class PostTagsRepository extends \Doctrine\ORM\EntityRepository
             ->select('COUNT(tp.id) as totalPost')
             ->setParameter('tag', $tag->getId())
             ->join(Post::class, 'p', 'WITH', 'tp.post = p.id')
-            ->where('tp.tag = :tag AND p.isDeleted = 0 AND p.isPublished = 1')
+            ->where($countOnlyPublished ? 'tp.tag = :tag AND p.isDeleted = 0 AND p.isPublished = 1' : 'tp.tag = :tag AND p.isDeleted = 0')
             ->getQuery()
             ->getOneOrNullResult();
     }
