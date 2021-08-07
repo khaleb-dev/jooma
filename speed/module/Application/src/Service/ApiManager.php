@@ -357,4 +357,18 @@ class ApiManager
         return $post;
     }
 
+    public function deletePost(Post $post) : bool
+    {
+        if (!empty($post))
+        {
+            $now = new \DateTime;
+            $post->setIsDeleted(true);
+            $post->setUpdatedOn($now);
+
+            $this->entity->flush();
+        }
+        
+        return true;
+    }
+
 }

@@ -91,7 +91,7 @@ $this->backOfficeMenu()->setActiveItemId('posts');
                     </svg>
                   </span>
                 </a>
-                <a href="#" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+                <a href="javascript:void(0)" class="btn btn-icon btn-light btn-hover-primary btn-sm" data-toggle="modal" data-target="#tagUpdateModal">
                   <span class="svg-icon svg-icon-md svg-icon-primary">
                     <!-- Svg Icon | path:assets/media/svg/icons/General/Trash.svg -->
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -118,6 +118,17 @@ $this->backOfficeMenu()->setActiveItemId('posts');
             ?>
           </tbody>
         </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="tagUpdateModal" tabindex="-1" role="dialog" aria-labelledby="tagUpdateModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary font-weight-bold" id="btnUpdateTag">Save changes</button>
       </div>
     </div>
   </div>

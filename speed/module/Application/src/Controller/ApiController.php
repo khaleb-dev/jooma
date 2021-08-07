@@ -632,5 +632,34 @@ class ApiController extends AbstractActionController
 
         return new JsonModel($response);
     }
-    
+
+    /**
+     * Action to delete post
+     * This will set the post isDeleted coloumn to 
+     */
+    public function deletePostAction() : JsonModel
+    {
+        $response = $this->response();
+
+        $token = $this->auth()->getAuthToken($this->params()->fromHeader('authorization'));
+        if (is_null($token)){
+            // return new JsonModel($this->response(400, 'BAD REQUEST'));
+        }
+
+        $postId = $this->params()->fromRoute('id', null);
+        if(!empty($postId) && $this->getRequest()->isPost())
+        {
+            $posts = $this->entityManager->getRepository(Post::class)->findOneBy(['id' => $postId, 'isDeleted' => false]);
+            if (!empty($posts)) {    
+                // perform delete and return to manage
+                $deleted = $this->apiManager->deletePost($post);
+                if($deleted){
+                    $response = $this->response(200, 'OK');
+                }
+            }
+        }
+        
+        return new JsonModel($response);
+    }
+
 }

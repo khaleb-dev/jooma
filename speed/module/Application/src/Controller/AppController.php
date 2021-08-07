@@ -66,7 +66,7 @@ class AppController extends AbstractActionController
         $postId = $this->params()->fromRoute('id', null);
         // load all posts
         if(empty($postId)){
-            $posts = $this->entityManager->getRepository(Post::class)->findBy([], ['id'=>'DESC'], 50,0);
+            $posts = $this->entityManager->getRepository(Post::class)->findBy(['isDeleted' => false], ['id'=>'DESC'], 50,0);
 
             $template = 'application/app/manage-posts';
             $view = new ViewModel([
