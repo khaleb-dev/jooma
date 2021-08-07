@@ -35,9 +35,16 @@ class AppController extends AbstractActionController
 
     public function dashboardAction() : ViewModel
     {
+        $groups = $this->entityManager->getRepository(PostGroup::class)->findAll();
+        $tags = $this->entityManager->getRepository(Tags::class)->findAll();
+        $posts = $this->entityManager->getRepository(Post::class)->findBy(['isDeleted' => false, 'isPublished' => true]);
+
         $this->layout('layout/app');
         return new ViewModel([
-                                'utility' => $this->utility
+                                'utility' => $this->utility,
+                                'groups' => $groups,
+                                'tags' => $tags,
+                                'posts' => $posts
                             ]);
     }
 
