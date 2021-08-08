@@ -10,7 +10,7 @@ return [
          /**
           * Set the list of allowed origins domain with protocol.
           */
-         // 'allowed_origins' => ['http://localhost:8080', 'https://app.ozioma.net'],
+        //  'allowed_origins' => ['http://api.sikha', 'http://admin.sikha', 'http://sikha'],
          'allowed_origins' => ['*'],
 
          /**

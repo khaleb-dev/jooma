@@ -649,8 +649,8 @@ class ApiController extends AbstractActionController
         $postId = $this->params()->fromRoute('id', null);
         if(!empty($postId) && $this->getRequest()->isPost())
         {
-            $posts = $this->entityManager->getRepository(Post::class)->findOneBy(['id' => $postId, 'isDeleted' => false]);
-            if (!empty($posts)) {    
+            $post = $this->entityManager->getRepository(Post::class)->findOneBy(['id' => $postId, 'isDeleted' => false]);
+            if (!empty($post)) {    
                 // perform delete and return to manage
                 $deleted = $this->apiManager->deletePost($post);
                 if($deleted){

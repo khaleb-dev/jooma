@@ -165,7 +165,7 @@ return [
             'api' => [
                 'type' => Hostname::class,
                 'options' => [
-                    'route' => 'api.'.$domainName,
+                    'route' => 'admin.'.$domainName,
                     'defaults' => [
                         'controller' => Controller\ApiController::class,
                         'action'     => 'index',

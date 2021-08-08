@@ -91,8 +91,8 @@ $this->backOfficeMenu()->setActiveItemId('posts');
                     </svg>
                   </span>
                 </a>
-                <a href="javascript:void(0)" class="btn btn-icon btn-light btn-hover-primary btn-sm" data-toggle="modal" data-target="#tagUpdateModal">
-                  <span class="svg-icon svg-icon-md svg-icon-primary">
+                <a href="javascript:void(0)" class="btn btn-icon btn-light btn-hover-danger btn-sm iconDelete" data-toggle="modal" data-target="#postDeleteModal" data-postid="<?= $post->getId() ?>">
+                  <span class="svg-icon svg-icon-md svg-icon-danger">
                     <!-- Svg Icon | path:assets/media/svg/icons/General/Trash.svg -->
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -123,13 +123,86 @@ $this->backOfficeMenu()->setActiveItemId('posts');
   </div>
 </div>
 
-<div class="modal fade" id="tagUpdateModal" tabindex="-1" role="dialog" aria-labelledby="tagUpdateModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="postDeleteModal" tabindex="-1" role="dialog" aria-labelledby="postDeleteModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary font-weight-bold" id="btnUpdateTag">Save changes</button>
+				<div class="text-center">
+          <h1 class="text-warning">
+            <span class="svg-icon svg-icon-warning svg-icon-5x">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <rect x="0" y="0" width="24" height="24"/>
+                    <path d="M11.1669899,4.49941818 L2.82535718,19.5143571 C2.557144,19.9971408 2.7310878,20.6059441 3.21387153,20.8741573 C3.36242953,20.9566895 3.52957021,21 3.69951446,21 L21.2169432,21 C21.7692279,21 22.2169432,20.5522847 22.2169432,20 C22.2169432,19.8159952 22.1661743,19.6355579 22.070225,19.47855 L12.894429,4.4636111 C12.6064401,3.99235656 11.9909517,3.84379039 11.5196972,4.13177928 C11.3723594,4.22181902 11.2508468,4.34847583 11.1669899,4.49941818 Z" fill="#000000" opacity="0.3"/>
+                    <rect fill="#000000" x="11" y="9" width="2" height="7" rx="1"/>
+                    <rect fill="#000000" x="11" y="17" width="2" height="2" rx="1"/>
+                </g>
+              </svg>
+            </span>
+          </h1>
+					<p class="pt-5">Are you sure you want to delete this post?</p>
+					<input type="hidden" name="postId" id="txtPostIdDelete">
+        </div>
+      </div>
+      <div class="modal-footer text-center col-md-12 pl-0">
+        <button class="btn btn-primary font-weight-bold col-md-5 mr-4" id="btnAcceptDelete">Confirm</button>
+        <button class="btn btn-light-primary font-weight-bold col-md-5" data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>
 </div>
+
+<?php
+	$this->headScript()
+	    ->offsetSetFile(5, $this->basePath('assets/lib/js/bootstrap.min.js'));
+
+    $this->inlineScript()->captureStart();
+?>
+$(document).ready(function(){
+  // handling post delete
+  let tr = '';
+  $(document).on('click', '.iconDelete', function(){
+    postId = $(this).data('postid');
+    $('#txtPostIdDelete').val(postId);
+    tr = $(this).closest('tr');
+  });
+  
+  $('#btnAcceptDelete').on('click', function(){
+    $(this).text('Deleting ');
+    $(this).addClass("spinner spinner-right spinner-white");
+    $(this).attr('disabled', 'disabled');
+    let btn = $(this);
+    $.ajax({
+      url: "<?=$utility::API_DOMAIN?>/v1/delete-post/"+$('#txtPostIdDelete').val(),
+      type: "POST",
+      //dataType: 'json',
+      //headers: {
+      //  "Authorization": "Bearer 'Token'"
+      //},
+      success: function(response){
+        btn.removeClass("spinner spinner-right spinner-white");
+        if (response.code == 200) {
+          btn.html('Deleted <i class="flaticon2-check-mark"></i>');
+          tr.remove();
+        }
+        else {
+          btn.html('Failed <i class="flaticon2-cross"></i>');
+          btn.removeClass("btn-primary");
+          btn.addClass("btn-danger");
+        }
+        setTimeout(function() {
+          btn.removeClass("btn-primary btn-danger");
+          btn.addClass("btn-primary");
+          btn.removeAttr('disabled');
+          btn.html('Confirm');
+          $('#postDeleteModal').modal('hide');
+          $('.modal-backdrop').remove();
+        }, 1000);
+      }
+    });
+  });
+});
+
+<?php
+    $this->inlineScript()->captureEnd();
+?>

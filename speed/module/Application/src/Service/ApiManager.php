@@ -365,7 +365,7 @@ class ApiManager
             $post->setIsDeleted(true);
             $post->setUpdatedOn($now);
 
-            $this->entity->flush();
+            $this->entityManager->flush();
         }
         
         return true;
