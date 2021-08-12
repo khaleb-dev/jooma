@@ -147,6 +147,19 @@ return [
                             ],
                         ],
                     ],
+                    'post-preview' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/preview[/:slug]',
+                            'constraints' => [
+                                'slug' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => [
+                                'controller'    => Controller\AppController::class,
+                                'action'        => 'preview',
+                            ],
+                        ],
+                    ],
                     'auth' => [
                         'type' => Segment::class,
                         'options' => [

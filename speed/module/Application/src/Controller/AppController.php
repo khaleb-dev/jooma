@@ -76,7 +76,21 @@ class AppController extends AbstractActionController
                                 ]);
         }
         else {
+            $post = $this->entityManager->getRepository(Post::class)->findOneBy(['id' => $postId,'isDeleted' => false]);
+            if (!empty($post)) {
+                $groups = $this->entityManager->getRepository(PostGroup::class)->findAll();
+                $tags = $this->entityManager->getRepository(Tags::class)->findAll();
+                $postTags = $this->entityManager->getRepository(PostTags::class)->findBy(['post' => $post]);
 
+                $template = 'application/app/update-post';
+                $view = new ViewModel([
+                                    'post' => $post,
+                                    'groups' => $groups,
+                                    'tags' => $tags,
+                                    'postTags' => $postTags,
+                                    'utility' => $this->utility
+                                ]);
+            }
         }
 
         $this->layout('layout/app');
@@ -159,6 +173,14 @@ class AppController extends AbstractActionController
     public function authAction() : ViewModel
     {
         $this->layout('layout/auth');
+        return new ViewModel([
+                                'utility' => $this->utility
+                            ]);
+    }
+
+    public function previewAction() : ViewModel
+    {
+        // $this->layout('layout/web');
         return new ViewModel([
                                 'utility' => $this->utility
                             ]);

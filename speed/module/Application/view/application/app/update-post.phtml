@@ -1,0 +1,226 @@
+<?php
+/**
+ * @var Laminas\View\Renderer\PhpRenderer $this
+ */
+
+$this->headTitle('Update Post');
+$this->backOfficeMenu()->setActiveItemId('posts');
+
+$pt = "";
+if(!empty($postTags)){
+    foreach ($postTags as $t) {
+        $pt .= $t->getTag()->getName().", "; 
+    }
+}
+
+
+?>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-custom gutter-b">
+            <div class="card-body pt-5 pb-0 mt-n3">
+                <div class="form-group">
+                    <label class="col-form-label">Category/Group</label>
+                    <select class="form-control selectpicker" data-size="4" name="slGroup" id="slGroup">
+                        <?php
+                            if (!empty($groups)) :
+                                foreach ($groups as $cat) :
+                        ?>
+                            <option value="<?= $cat->getId() ?>" <?= ($cat->getId() == $post->getGroup()->getId()) ?: "selected" ?>><?= $cat->getName() ?></option>
+                        <?php
+                                endforeach;
+                            endif;
+                        ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="">Title</label>
+                    <input type="text" name="txtTitle" id="txtTitle" class="form-control" value="<?= $post->getPostTitle() ?>">
+                </div>
+                <div class="form-group">
+                    <label class="">Slug </label>
+                    <input type="text" name="txtSlug" id="txtSlug" class="form-control" value="<?= $post->getSlug() ?>">
+                    <div class="mt-3 text-muted">This will be auto generated if left empty.</div>
+                </div>
+                <div class="form-group">
+                    <label class="">Tag(s)</label>
+                    <input id="txtTags" class="form-control tagify" placeholder='type...' value="<?= $pt ?>" />
+                </div>
+                <div class="form-group">
+                    <textarea id="txtPostBody" name="txtPostBody" class="tox-target"><?= $post->getPostBody() ?></textarea>
+                </div>
+                <div class="tinymce"></div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-secondary font-weight-bold" id="saveDraft">Save</button>
+                    <button type="button" class="btn btn-primary font-weight-bold" id="publishPost">Publish</button>
+                </div>
+                <input type="hidden" name="pid" id="pid" value="<?= $post->getId() ?>">
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php
+    $this->headScript()
+        ->offsetSetFile(41, $this->basePath('assets/plugins/tinymce/tinymce.min.js'));
+
+    $this->inlineScript()->captureStart();
+?>
+    var loadTags = function() {
+        var input = document.getElementById('txtTags');
+        var tagify = new Tagify(input, {
+            enforceWhitelist: true,
+            whitelist: [
+                <?php
+                    if (!empty($tags)) {
+                        $ts = '';
+                        foreach ($tags as $tag) {
+                            $ts .= '"'.$tag->getName().'", ';
+                        }
+                        echo $ts;
+                    }
+                ?>
+            ],
+            callbacks: {
+                //add: console.log, // callback when adding a tag
+                //remove: console.log // callback when removing a tag
+            }
+        });
+    }
+
+    var prepareTags = function() {
+        let tagInput = $('#txtTags').val();
+        if(!tagInput.isEmpty()){
+            console.log(tagInput);
+        }
+        else{
+            console.log('nothing in tags');
+        }
+    }
+    
+    // tinymce config
+    tinymce.init({
+        selector: '#txtPostBody',
+	    browser_spellcheck: true,
+        plugins: [
+            "advlist lists link image print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks code fullscreen help",
+            "autosave media emoticons imagetool table autolink charmap",
+        ],
+        toolbar: "formatselect | fontsizeselect | undo redo | cut copy paste | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright alignjustify outdent indent | blockquote subscript superscript | emoticons image imagetool media | preview",
+        branding: false,
+    });
+
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
+    $(document).ready(function() {
+        loadTags();
+
+        $(document).on('click', '#saveDraft', function(){
+            //prepareTags();
+            $(this).text('Saving ');
+            $(this).addClass("spinner spinner-right spinner-primary");
+            $(this).attr('disabled', 'disabled');
+            $('#publishPost').attr('disabled', 'disabled');
+            let btn = $(this);
+            let url = '<?=$utility::API_DOMAIN?>/v1/post/'+$('#pid').val();
+            var tiny = tinyMCE.get('txtPostBody');
+            $.ajax({
+                url: url,
+                type: "POST",
+                //dataType: 'json',
+                //headers: {
+                //  "Authorization": "Bearer 'Token'"
+                //},
+                data: {
+                  group: $('#slGroup').val(),
+                  title: $('#txtTitle').val(),
+                  slug: $('#txtSlug').val(),
+                  tags: $('#txtTags').val(),
+                  content: tiny.getContent(),
+                  publish: 'false'
+                },
+                success: function(response){
+                  btn.removeClass("spinner spinner-right spinner-primary");
+                  if (response.code == 201 || response.code == 200) {
+                    btn.html('Saved <i class="flaticon2-check-mark text-primary"></i>');
+                    $("#txtSlug").val(response.postData.slug);
+                    $("#txtTitle").val(response.postData.title);
+                    $("#pid").val(response.postData.id);
+                    toastr.success("Nice, work SAVED!");
+                  }
+                  else {
+                    toastr.danger(response.status);
+                  }
+                  setTimeout(function() {
+                    btn.removeAttr('disabled');
+                    $('#publishPost').removeAttr('disabled');
+                    btn.html('Save');
+                  }, 1000);
+                }
+            });
+        });
+
+        $(document).on('click', '#publishPost', function(){
+            $(this).text('Publishing ');
+            $(this).addClass("spinner spinner-right spinner-white");
+            $(this).attr('disabled', 'disabled');
+            $('#saveDraft').attr('disabled', 'disabled');
+            let btn = $(this);
+            let url = '<?=$utility::API_DOMAIN?>/v1/post/'+$('#pid').val();
+            var tiny = tinyMCE.get('txtPostBody');
+            $.ajax({
+                url: url,
+                type: "POST",
+                //dataType: 'json',
+                //headers: {
+                //  "Authorization": "Bearer 'Token'"
+                //},
+                data: {
+                  group: $('#slGroup').val(),
+                  title: $('#txtTitle').val(),
+                  slug: $('#txtSlug').val(),
+                  tags: $('#txtTags').val(),
+                  content: tiny.getContent(),
+                  publish: 'true'
+                },
+                success: function(response){
+                  btn.removeClass("spinner spinner-right spinner-white");
+                  if (response.code == 201 || response.code == 200) {
+                    btn.html('Published <i class="flaticon2-check-mark text-white"></i>');
+                    $("#txtSlug").val(response.postData.slug);
+                    $("#txtTitle").val(response.postData.title);
+                    $("#pid").val(response.postData.id);
+                    toastr.success("Great! Post PUBLISHED.");
+
+                    setTimeout(function() {
+                      window.location.assign('<?= $this->url('app/manage-posts')?>');
+                    }, 1000);
+                  }
+                  else {
+                    toastr.danger(response.status);
+                  }
+                }
+            });
+        });
+    });
+<?php
+    $this->inlineScript()->captureEnd();
+?>

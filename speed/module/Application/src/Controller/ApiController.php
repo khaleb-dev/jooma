@@ -446,6 +446,11 @@ class ApiController extends AbstractActionController
         return $postData;
     }
 
+    private function prepareTags()
+    {
+        
+    }
+
     /**
      * Action to handle create post
      * This will create and publish a new post and return the post data
