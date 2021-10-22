@@ -7,7 +7,11 @@ $this->headTitle('Groups');
 $this->backOfficeMenu()->setActiveItemId('groups');
 
 ?>
-
+<div class="row">
+    <div class="col-12 text-right">
+        <span class="btn btn-primary mb-3 text-hover-primary" data-toggle="modal" data-target="#createGroupModal">+</span>
+    </div>
+</div>
 <div class="row">
     <?php
         if (empty($groups)) :
@@ -49,10 +53,82 @@ $this->backOfficeMenu()->setActiveItemId('groups');
     ?>
 </div>
 
+<div class="modal fade" id="createGroupModal" tabindex="-1" role="dialog" aria-labelledby="createGroupModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createGroupModalLabel">Create Group</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i aria-hidden="true" class="ki ki-close"></i>
+        </button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <div data-scroll="true" data-height="220">
+            <div class="form-group">
+              <label for="txtGroupName">Name<span class="text-danger">*</span></label>
+              <input type="text" name="txtGroupName" id="txtGroupName" class="form-control" placeholder="Enter group name" value="">
+              <span class="form-text text-muted">This name is visible to viewers on your website.</span>
+            </div>
+            <div class="form-group">
+              <label for="txtGroupDexcription">Tag Description</label>
+              <textarea name="txtGroupDexcription" class="form-control" id="txtGroupDexcription" rows="3"></textarea>
+            </div>
+            <!-- <div class="form-group mb-1">
+                <input type="checkbox" name="makeDefault" id="makeDefault" value="1">
+                <label for="makeDefault">Make Default</label>
+            </div> -->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary font-weight-bold" id="btnCreateGroup">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <?php
     $this->inlineScript()->captureStart();
 ?>
+$(document).ready(function(){
+  $(document).on('click', '#btnCreateGroup', function(){
+    $(this).text('Create ');
+    $(this).addClass("spinner spinner-right spinner-white");
+    $(this).attr('disabled', 'disabled');
+    let btn = $(this);
+    $.ajax({
+      url: "<?=$utility::API_DOMAIN?>/v1/group",
+      type: "POST",
+      //dataType: 'json',
+      //headers: {
+      //  "Authorization": "Bearer 'Token'"
+      //},
+      data: {
+        name: $('#txtGroupName').val(),
+        description: $('#txtGroupDexcription').val(),
+        default: 'false'
+      },
+      success: function(response){
+        btn.removeClass("spinner spinner-right spinner-white");
+        if (response.code == 201) {
+            setTimeout(function() {
+                window.location.assign('<?= $this->url('app/manage-groups')?>');
+            }, 1000);
+        }
+        else {
 
+        }
+        setTimeout(function() {
+          btn.removeAttr('disabled');
+          btn.html('Create');
+        }, 1000);
+      }
+    });
+
+  });
+});
 <?php
     $this->inlineScript()->captureEnd();
 ?>
