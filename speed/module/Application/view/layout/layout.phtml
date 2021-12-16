@@ -10,179 +10,368 @@
 		<?= $this->headTitle('Sikha')->setSeparator(' :: ')->setAutoEscape(false) ?>
 
         <?= $this->headMeta()
-            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendName('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no')
             ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
             ->appendName('keywords', '')
 	        ->appendName('description', '')
 	        ->appendName('language', 'English')
 	        ->appendName('author', 'Khaleb Great')
         ?>
+		<?php
+            echo $this->headLink(['rel' => 'icon', 'type' => 'image/png', 'href' => $this->basePath() . 'assets/img/favicon.png'])
+		?>
 
         <?php
             echo $this->headLink(['rel' => 'shortcut icon', 'href' => $this->basePath() . 'assets/media/logos/favicon.ico'])
-            ->offsetSetStylesheet(20, $this->basePath('blog_assets/css/blog.fonts.css'), '')
-            ->offsetSetStylesheet(10, $this->basePath('blog_assets/css/blog.style.bundle.css'), '');
+            ->offsetSetStylesheet(100, $this->basePath('blog_assets/css/responsive.css'), '')
+            ->offsetSetStylesheet(90, $this->basePath('blog_assets/css/style.css'), '')
+            ->offsetSetStylesheet(80, $this->basePath('blog_assets/css/nice-select.min.css'), '')
+            ->offsetSetStylesheet(70, $this->basePath('blog_assets/css/magnific-popup.min.css'), '')
+            ->offsetSetStylesheet(60, $this->basePath('blog_assets/css/owl.theme.default.min.css'), '')
+            ->offsetSetStylesheet(50, $this->basePath('blog_assets/css/owl.carousel.min.css'), '')
+            ->offsetSetStylesheet(40, $this->basePath('blog_assets/css/boxicons.min.css'), '')
+            ->offsetSetStylesheet(30, $this->basePath('blog_assets/css/meanmenu.css'), '')
+            ->offsetSetStylesheet(20, $this->basePath('blog_assets/css/animate.min.css'), '')
+            ->offsetSetStylesheet(10, $this->basePath('blog_assets/css/bootstrap.min.css'), '');
         ?>
 	</head>
-    <body data-aos-easing="slide" data-aos-duration="800" data-aos-delay="0">
-		<div class="site-wrap">
-			<div class="site-mobile-menu">
-				<div class="site-mobile-menu-header">
-					<div class="site-mobile-menu-close mt-3">
-						<span class="icon-close2 js-menu-toggle"></span>
-					</div>
+	<body>
+		<div class="preloader">
+			<div class="loader">
+				<div class="wrapper">
+					<div class="circle circle-1"></div>
+					<div class="circle circle-1a"></div>
+					<div class="circle circle-2"></div>
+					<div class="circle circle-3"></div>
 				</div>
-				<div class="site-mobile-menu-body">
-					<ul class="site-nav-wrap">
-						<li>
-							<a href="/category.html">Home</a>
-						</li>
-						<li>
-							<a href="/category.html">Politics</a>
-						</li>
-						<li>
-							<a href="/category.html">Tech</a>
-						</li>
-						<li>
-							<a href="/category.html">Entertainment</a>
-						</li>
-						<li>
-							<a href="/category.html">Travel</a>
-						</li>
-						<li>
-							<a href="/category.html">Sports</a>
-						</li>
-						<li class="d-none d-lg-inline-block">
-							<a href="/#" class="js-search-toggle"><span class="icon-search"></span></a>
-						</li>
-					</ul>
-				</div>
+				<span>Loading...</span>
 			</div>
-			<header class="site-navbar" role="banner">
-				<div class="container-fluid">
-					<div class="row align-items-center">
-						<div class="col-12 search-form-wrap js-search-form">
-							<form action="/#">
-								<input type="text" id="s" class="form-control" placeholder="Search..." />
-								<button class="search-btn" type="submit"><span class="icon-search"></span></button>
-							</form>
-						</div>
-						<div class="col-4 site-logo">
-							<a href="/index.html" class="text-black h2 mb-0">JooMedia</a>
-						</div>
-						<div class="col-8 text-right">
-							<nav class="site-navigation" role="navigation">
-								<ul class="site-menu <!--js-clone-nav--> mr-auto d-none d-lg-block mb-0">
-									<li>
-									<a href="/category.html">Home</a>
-									</li>
-									<li>
-									<a href="/category.html">Politics</a>
-									</li>
-									<li>
-									<a href="/category.html">Tech</a>
-									</li>
-									<li>
-									<a href="/category.html">Entertainment</a>
-									</li>
-									<li>
-									<a href="/category.html">Travel</a>
-									</li>
-									<li>
-									<a href="/category.html">Sports</a>
-									</li>
-									<li class="d-none d-lg-inline-block">
-									<a href="/#" class="js-search-toggle"><span
-										class="icon-search"></span></a>
-									</li>
-								</ul>
-							</nav>
-							<a href="/#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-lg-none"><span class="icon-menu h3"></span></a>
-						</div>
-					</div>
-				</div>
-			</header>
+		</div>
 
-			<?= $this->content ?>
-			
-			<div class="site-footer">
-				<div class="container">
-					<div class="row mb-5">
-						<div class="col-md-4">
-							<h3 class="footer-heading mb-4">About Us</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-							Placeat reprehenderit magnam deleniti quasi saepe, consequatur
-							atque sequi delectus dolore veritatis obcaecati quae, repellat
-							eveniet omnis, voluptatem in. Soluta, eligendi, architecto.</p>
-						</div>
-						<div class="col-md-3 ml-auto">
-							<ul class="list-unstyled float-left mr-5">
-								<li>
-									<a href="/#">About Us</a>
-								</li>
-								<li>
-									<a href="/#">Advertise</a>
-								</li>
-								<li>
-									<a href="/#">Careers</a>
-								</li>
-								<li>
-									<a href="/#">Subscribes</a>
-								</li>
-								</ul>
-								<ul class="list-unstyled float-left">
-								<li>
-									<a href="/#">Travel</a>
-								</li>
-								<li>
-									<a href="/#">Lifestyle</a>
-								</li>
-								<li>
-									<a href="/#">Sports</a>
-								</li>
-								<li>
-									<a href="/#">Nature</a>
-								</li>
-							</ul>
-						</div>
-						<div class="col-md-4">
-							<div>
-								<h3 class="footer-heading mb-4">Connect With Us</h3>
-								<p>
-									<a href="/#"><span class="icon-facebook pt-2 pr-2 pb-2 pl-0"></span></a>
-									<a href="/#"><span class="icon-twitter p-2"></span></a>
-									<a href="/#"><span class="icon-instagram p-2"></span></a>
-									<a href="/#"><span class="icon-rss p-2"></span></a>
-									<a href="/#"><span class="icon-envelope p-2"></span></a>
-								</p>
-							</div>
-						</div>
+		<div class="top-header-area">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-6">
+						<ul class="top-header-social">
+							<li>
+								<a href="#" class="facebook" target="_blank">
+									<i class="bx bxl-facebook"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="pinterest" target="_blank">
+									<i class="bx bxl-instagram"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="pinterest" target="_blank">
+									<i class="bx bxl-linkedin"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="twitter" target="_blank">
+									<i class="bx bxl-twitter"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="linkedin" target="_blank">
+									<i class="bx bxl-youtube"></i>
+								</a>
+							</li>
+						</ul>
 					</div>
-					<div class="row">
-						<div class="col-12 text-center">
-							<p>Copyright © <?= date("Y") ?> - All rights reserved | Made with
-							<i class="icon-heart text-danger" aria-hidden="true"></i> by
-							<a href="https://khaleb.dev" target="_blank">khaleb.dev</a>
-							</p>
-						</div>
+					<div class="col-lg-6">
+						<ul class="top-header-others">
+							<li>
+								<div class="languages-list">
+									<select>
+										<option value="1">English</option>
+										<option value="2">العربيّة</option>
+										<option value="3">Deutsch</option>
+										<option value="3">Português</option>
+										<option value="3">简体中文</option>
+									</select>
+								</div>
+							</li>
+							<li>
+								<i class="bx bx-user"></i>
+								<a href="login.html">Login</a>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+	<div class="navbar-area">
+      <div class="main-responsive-nav">
+        <div class="container">
+          <div class="main-responsive-menu">
+            <div class="logo">
+              <a href="index-2.html">
+				  <img src="blog_assets/imgs/logo-1.png" alt="image" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-navbar">
+        <div class="container">
+          <nav class="navbar navbar-expand-md navbar-light">
+            <a class="navbar-brand" href="index-2.html">
+				<img src="blog_assets/imgs/logo-1.png" alt="image" />
+            </a>
+            <div
+              class="collapse navbar-collapse mean-menu"
+              id="navbarSupportedContent"
+            >
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a href="#" class="nav-link active"> Home </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link"> About </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link"> TOC </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link"> Privacy Policy </a>
+                </li>
+              </ul>
+              <div class="others-options d-flex align-items-center">
+                <div class="option-item">
+                  <form class="search-box">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Search for.."
+                    />
+                    <button type="submit"><i class="bx bx-search"></i></button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="others-option-for-responsive">
+        <div class="container">
+          <div class="dot-menu">
+            <div class="inner">
+              <div class="circle circle-one"></div>
+              <div class="circle circle-two"></div>
+              <div class="circle circle-three"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="option-inner">
+              <div class="others-options d-flex align-items-center">
+                <div class="option-item">
+                  <form class="search-box">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Search for.."
+                    />
+                    <button type="submit"><i class="bx bx-search"></i></button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+		<?= $this->content ?>
+		
+	<section class="footer-area pt-100 pb-70">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="single-footer-widget">
+              <a href="#">
+				  <img src="blog_assets/imgs/logo-3.png" alt="image" />
+              </a>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+              <ul class="social">
+                <li>
+                  <a href="#" class="facebook" target="_blank">
+                    <i class="bx bxl-facebook"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="twitter" target="_blank">
+                    <i class="bx bxl-instagram"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="linkedin" target="_blank">
+                    <i class="bx bxl-twitter"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="linkedin" target="_blank">
+                    <i class="bx bxl-youtube"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="single-footer-widget">
+              <h2>Recent post</h2>
+              <div class="post-content">
+                <div class="row align-items-center">
+                  <div class="col-md-4">
+                    <div class="post-image">
+                      <a href="#">
+						  <img src="blog_assets/imgs/recent-post/recent-post-1.jpg" alt="image" />
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <h4>
+                      <a href="#">The match of the volleyball full of excitement</a>
+                    </h4>
+                    <span>28 Sep 2021</span>
+                  </div>
+                </div>
+              </div>
+              <div class="post-content">
+                <div class="row align-items-center">
+                  <div class="col-md-4">
+                    <div class="post-image">
+                      <a href="#">
+						  <img src="blog_assets/imgs/recent-post/recent-post-2.jpg" alt="image" />
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <h4>
+                      <a href="#"
+                        >The match of the volleyball full of excitement</a
+                      >
+                    </h4>
+                    <span>28 Sep 2021</span>
+                  </div>
+                </div>
+              </div>
+              <div class="post-content">
+                <div class="row align-items-center">
+                  <div class="col-md-4">
+                    <div class="post-image">
+                      <a href="#">
+						  <img src="blog_assets/imgs/recent-post/recent-post-3.jpg" alt="image" />
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <h4>
+                      <a href="#"
+                        >The match of the volleyball full of excitement</a
+                      >
+                    </h4>
+                    <span>28 Sep 2021</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="single-footer-widget">
+              <h2>Useful links</h2>
+              <ul class="useful-links-list">
+                <li>
+                  <a href="#">Contact us</a>
+                </li>
+                <li>
+                  <a href="#">News</a>
+                </li>
+                <li>
+                  <a href="#">Privacy & policy</a>
+                </li>
+                <li>
+                  <a href="#">Terms & conditions</a>
+                </li>
+                <li>
+                  <a href="#">Affilate ads</a>
+                </li>
+                <li>
+                  <a href="#">Business</a>
+                </li>
+                <li>
+                  <a href="#">Technology</a>
+                </li>
+                <li>
+                  <a href="#">Entertainment</a>
+                </li>
+                <li>
+                  <a href="#">Politics</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="single-footer-widget">
+              <h2>Subscribe</h2>
+              <div class="widget-subscribe-content">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <form class="newsletter-form">
+                  <input
+                    type="email"
+                    class="input-newsletter"
+                    placeholder="Enter your email"
+                    name="EMAIL"
+                    required
+                  />
+                  <button type="submit">Subscribe</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+	
+    <div class="copyright-area">
+      <div class="container">
+        <div class="copyright-area-content">
+          <p>
+            Copyright © <?= date("Y") ?> JooMedia. All Rights Reserved | Developed with 
+			<i class='bx bx-heart' style='color:#ff0401'></i> by 
+			<a href="https://khaleb.dev" target="_blank">khaleb.dev</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+		<div class="go-top">
+			<i class="bx bx-up-arrow-alt"></i>
+		</div>
 
 		<?= $this->headScript()
 			->offsetSetFile(120, $this->basePath('blog_assets/js/main.js'))
-			->offsetSetFile(110, $this->basePath('blog_assets/js/aos-2.3.4.js'))
-			->offsetSetFile(100, $this->basePath('blog_assets/js/bootstrap-datepicker-1.6.4.min.js'))
-			->offsetSetFile(90, $this->basePath('blog_assets/js/jquery.magnific-popup-1.1.0.min.js'))
-			->offsetSetFile(80, $this->basePath('blog_assets/js/jquery.countdown-2.2.0.min.js'))
-			->offsetSetFile(70, $this->basePath('blog_assets/js/jquery.stellar-0.6.2.min.js'))
-			->offsetSetFile(60, $this->basePath('blog_assets/js/owl.carousel-2.2.1.min.js'))
-			->offsetSetFile(50, $this->basePath('blog_assets/js/bootstrap.min.js'))
-			->offsetSetFile(40, $this->basePath('blog_assets/js/popper-2.9.2.min.js'))
-			->offsetSetFile(30, $this->basePath('blog_assets/js/jquery-ui-1.12.1.js'))
-			->offsetSetFile(20, $this->basePath('blog_assets/js/jquery-migrate-3.0.1.min.js'))
-			->offsetSetFile(10, $this->basePath('blog_assets/js/jquery-3.3.1.min.js'));
+			->offsetSetFile(110, $this->basePath('blog_assets/js/wow.min.js'))
+			->offsetSetFile(100, $this->basePath('blog_assets/js/contact-form-script.js'))
+			->offsetSetFile(90, $this->basePath('blog_assets/js/form-validator.min.js'))
+			->offsetSetFile(80, $this->basePath('blog_assets/js/jquery.ajaxchimp.min.js'))
+			->offsetSetFile(70, $this->basePath('blog_assets/js/nice-select.min.js'))
+			->offsetSetFile(60, $this->basePath('blog_assets/js/jquery.magnific-popup.min.js'))
+			->offsetSetFile(50, $this->basePath('blog_assets/js/owl.carousel.min.js'))
+			->offsetSetFile(40, $this->basePath('blog_assets/js/jquery.meanmenu.js'))
+			->offsetSetFile(30, $this->basePath('blog_assets/js/bootstrap.min.js'))
+			->offsetSetFile(20, $this->basePath('blog_assets/js/popper.min.js'))
+			->offsetSetFile(10, $this->basePath('blog_assets/js/jquery.min.js'));
 		?>
         <?= $this->inlineScript() ?>
     </body>
